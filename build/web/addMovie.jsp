@@ -1,69 +1,101 @@
-<%-- 
-    Document   : addMovie
-    Created on : Mar 15, 2025, 6:26:00 PM
-    Author     : trung
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="UTF-8">
-    <title>Thêm phim mới</title>
-    <link rel="stylesheet" href="css/admin.css">
-</head>
-<body>
-    <div class="admin-container">
-        <nav class="sidebar">
-            <h2>ADMIN</h2>
-            <ul>
-                <li><a href="admin1.jsp">Quản lý phim</a></li>
-                <li><a href="admin2.jsp">Quản lý người dùng</a></li>
-                <li><a href="home.jsp" class="logout-btn">Trở lại</a></li>
-            </ul>
-        </nav>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Thêm Phim Mới</title>
+        <link rel="stylesheet" href="css/register.css">
+        <style>
+            .button-group {
+                display: flex;
+                justify-content: space-between;
+                margin-top: 20px;
+            }
 
-        <main class="content">
-            <header>
-                <h2>Thêm phim mới</h2>
-            </header>
+            .button-group button {
+                width: 48%; /* Đảm bảo hai nút có kích thước tương đương */
+            }
 
-            <section class="add-movie-form">
-                <form action="MovieController" method="post">
-                    <input type="hidden" name="action" value="addMovie">
+            .back-button {
+                display: block;
+                width: fit-content;
+                margin: 20px auto;
+                padding: 10px 20px;
+                background-color: #6c757d;
+                color: white;
+                text-align: center;
+                text-decoration: none;
+                border-radius: 5px;
+            }
 
-                    <label for="title">Tên phim:</label>
-                    <input type="text" id="title" name="title" required>
+            .back-button:hover {
+                background-color: #5a6268;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="logo-lazymoive">
+            <a href="index.jsp">
+                <img src="img/logo.jpg" alt="Logo">
+            </a>    
+        </div>
 
-                    <label for="description">Mô tả:</label>
-                    <textarea id="description" name="description" required></textarea>
 
-                    <label for="releaseYear">Năm phát hành:</label>
-                    <input type="number" id="releaseYear" name="releaseYear" required>
+        <div class="form-container">
+            <h2>Thêm Phim Mới</h2>
+            <form action="MainController" method="post">
+                <input type="hidden" name="action" value="addMovie">
 
-                    <label for="country">Quốc gia:</label>
-                    <input type="text" id="country" name="country" required>
+                <div class="form-group">
+                    <label for="title">Tên Phim:</label>
+                    <input type="text" id="title" name="title" placeholder="Nhập tên phim" required>
+                </div>
 
-                    <label for="rating">Đánh giá:</label>
-                    <input type="number" step="0.1" id="rating" name="rating" required>
+                <div class="form-group">
+                    <label for="description">Mô Tả:</label>
+                    <textarea id="description" name="description" placeholder="Nhập mô tả phim" required></textarea>
+                </div>
 
-                    <label for="videoUrl">URL Phim:</label>
-                    <input type="url" id="videoUrl" name="videoUrl" required>
+                <div class="form-group">
+                    <label for="releaseYear">Năm Phát Hành:</label>
+                    <input type="number" id="releaseYear" name="releaseYear" min="1900" max="2100" required>
+                </div>
 
+                <div class="form-group">
+                    <label for="country">Quốc Gia:</label>
+                    <input type="text" id="country" name="country" placeholder="Nhập quốc gia" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="rating">Đánh Giá:</label>
+                    <input type="number" id="rating" name="rating" step="0.1" min="0" max="5" placeholder="Nhập điểm đánh giá (0-5)" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="videoUrl">URL Video:</label>
+                    <input type="url" id="videoUrl" name="videoUrl" placeholder="Nhập URL video" required>
+                </div>
+
+                <div class="form-group">
                     <label for="trailerUrl">URL Trailer:</label>
-                    <input type="url" id="trailerUrl" name="trailerUrl" required>
+                    <input type="url" id="trailerUrl" name="trailerUrl" placeholder="Nhập URL trailer" required>
+                </div>
 
-                    <label for="thumbnailUrl">URL Hình ảnh:</label>
-                    <input type="url" id="thumbnailUrl" name="thumbnailUrl" required>
+                <div class="form-group">
+                    <label for="thumbnailUrl">URL Ảnh:</label>
+                    <input type="url" id="thumbnailUrl" name="thumbnailUrl" placeholder="Nhập URL ảnh phim" required>
+                </div>
 
-                    <label for="username">Người thêm:</label>
-                    <input type="text" id="username" name="username" value="${User.username}" readonly>
+                <div class="form-group">
+                    <label for="username">Người Thêm:</label>
+                    <input type="text" id="username" name="username" value="${User.userName}" readonly>
+                </div>
 
-                    <button type="submit">Thêm phim</button>
-                </form>
-            </section>
-        </main>
-    </div>
-</body>
+                <div class="button-group">
+                    <button type="submit">Thêm Phim</button>
+                    <a href="home.jsp" class="cancel-button">Hủy</a>
+                </div>
+            </form>
+        </div>
+    </body>
 </html>
-

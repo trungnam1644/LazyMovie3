@@ -121,3 +121,18 @@ p a:hover {
 p a:active {
     color: red;
 }
+.cancel-button {
+    display: inline-block;
+    width: 48%;
+    padding: 10px;
+    text-align: center;
+    background-color: #dc3545;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.cancel-button:hover {
+    background-color: #c82333;
+}
