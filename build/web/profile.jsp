@@ -21,7 +21,9 @@
                 </div>
                 <ul>
                     <li><a href="home.jsp">Trang Chủ</a></li>
-                    <li><a href="admin1.jsp">Quản Lý Admin</a></li>
+                        <c:if test="${User.role == 'Admin'}">
+                        <li><a href="admin1.jsp">Quản Lý Admin</a></li>
+                        </c:if>
                     <li><a href="home.jsp" class="logout-btn">Trở lại</a></li>
                 </ul>
             </div>
