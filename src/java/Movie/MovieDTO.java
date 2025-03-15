@@ -22,12 +22,8 @@ public class MovieDTO {
     private String trailerURL;
     private String thumbnailURL;
     private String userName;
-    private List<String> genres;
-    private List<String> actors;
 
-    public MovieDTO(int movieID, String title, String description, int releaseYear, String countryName, double rating,
-                    String videoURL, String trailerURL, String thumbnailURL, String userName,
-                    List<String> genres, List<String> actors) {
+    public MovieDTO(int movieID, String title, String description, int releaseYear, String countryName, double rating, String videoURL, String trailerURL, String thumbnailURL, String userName) {
         this.movieID = movieID;
         this.title = title;
         this.description = description;
@@ -38,8 +34,6 @@ public class MovieDTO {
         this.trailerURL = trailerURL;
         this.thumbnailURL = thumbnailURL;
         this.userName = userName;
-        this.genres = genres;
-        this.actors = actors;
     }
 
     public int getMovieID() {
@@ -122,22 +116,6 @@ public class MovieDTO {
         this.userName = userName;
     }
 
-    public List<String> getGenres() {
-        return genres;
-    }
-
-    public void setGenres(List<String> genres) {
-        this.genres = genres;
-    }
-
-    public List<String> getActors() {
-        return actors;
-    }
-
-    public void setActors(List<String> actors) {
-        this.actors = actors;
-    }
-
-   
-
+    
 }
+

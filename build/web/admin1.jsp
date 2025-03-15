@@ -26,6 +26,7 @@
         <main class="content">
             <header>
                 <h2 id="page-title">Quản lý phim</h2>
+                <a href="addMovie.jsp" class="add-movie-btn">Thêm phim</a>
             </header>
         
             <!-- Quản lý phim -->

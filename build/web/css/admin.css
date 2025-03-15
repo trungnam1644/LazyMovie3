@@ -133,3 +133,17 @@ tbody tr:hover {
 .delete-btn:hover {
     background: darkred;
 }
+.add-movie-btn {
+    display: inline-block;
+    padding: 10px 15px;
+    margin-bottom: 15px;
+    background-color: #28a745;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.add-movie-btn:hover {
+    background-color: #218838;
+}
