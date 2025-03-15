@@ -23,11 +23,8 @@ body {
   color: white;
 }
 
-.logo-container {
+.logo-container img{
   flex: 1;
-}
-
-.logo {
   width: 90px;
   border-radius: 50%;
 }
@@ -328,7 +325,7 @@ body {
 .movie-list-item-title {
   background-color: rgba(0, 0, 0, 0.6);
   padding: 0 10px;
-  font-size: 32px;
+  font-size: 30px;
   width: 100%;
   position: absolute;
   bottom: 0;

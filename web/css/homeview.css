@@ -23,11 +23,8 @@ body {
   color: white;
 }
 
-.logo-container {
+.logo-container img{
   flex: 1;
-}
-
-.logo {
   width: 90px;
   border-radius: 50%;
 }
@@ -198,120 +195,6 @@ body {
   display: block;
 }
 
-.package-overlay {
-  position: fixed; /* Cố định vị trí trên màn hình */
-  top: 100px; /* Bắt đầu ngay dưới navbar */
-  left: 0;
-  width: 100%;
-  height: calc(100vh - 100px);
-  background: rgba(0, 0, 0, 0.7); /* Làm tối nền phía sau */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  /* Mặc định ẩn giao diện chọn gói */
-  opacity: 0; /* Làm mờ hoàn toàn, không nhìn thấy */
-  visibility: hidden; /* Không thể tương tác và không chiếm diện tích */
-  transition: opacity 0.3s ease-in-out;  /* Tạo hiệu ứng mượt mà khi thay đổi độ mờ */
-  z-index: 100;
-}
-
-.package-container {
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  text-align: center;
-  width: 50%;
-  height: auto;
-  position: relative;
-}
-
-.close-icon {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 20px;
-  cursor: pointer;
-}
-
-.packages {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  padding-top: 15px;
-}
-
-.package {
-  flex: 1;
-  background: #f4f4f4;
-  padding: 20px;
-  border-radius: 10px;
-  border: 2px solid #ccc;
-  text-align: center;
-  width: 250px; /* Giới hạn chiều rộng */
-  height: 450px; /* Làm gói cao hơn chiều rộng */
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.package.basic {
-  border-color: #4dbf00; /* Màu viền gói cơ bản */
-}
-
-.package.premium {
-  border-color: #ff9800; /* Màu viền gói cao cấp */
-}
-
-/* Hiển thị giá tiền */
-.package-price {
-  font-size: 18px;
-  font-weight: bold;
-  margin: 10px 0;
-  color: #333;
-}
-
-/* Nút chọn gói */
-.select-package {
-  padding: 10px;
-  border: none;
-  background: #4dbf00;
-  color: white;
-  cursor: pointer;
-  border-radius: 5px;
-  margin-top: auto;
-  font-size: 16px;
-  font-weight: bold;
-  transition: background 0.3s ease, transform 0.2s ease; /* Hiệu ứng chuyển đổi */
-}
-
-/* Hiệu ứng hover */
-.select-package:hover {
-  background: #45a600; /* Màu tối hơn khi di chuột */
-}
-
-.select-package:active {
-  transform: scale(0.95); /* Làm nút nhỏ lại khi nhấn */
-  background: #3e9200; /* Màu đậm hơn */
-}
-
-/* Danh sách tính năng */
-.packages ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  text-align: left;
-}
-
-.package ul li {
-  padding: 10px 0;
-  border-bottom: 1px solid #ddd; /* Thêm đường kẻ dưới mỗi mục */
-}
-
-.package ul li:last-child {
-  border-bottom: none; /* Loại bỏ đường kẻ dưới cùng */
-}
-
 .container {
   display: flex;
   justify-content: center;
@@ -335,18 +218,8 @@ body {
 
 .video-container {
   width: 100%;
-  padding-bottom: 56%;
   position: relative;
   margin-bottom: 20px;
-}
-
-.video-container video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 10px;
 }
 
 .movie-title {

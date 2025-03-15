@@ -93,7 +93,7 @@
                     <div class="movie-list-wrapper">
                         <div class="movie-list">
                             <div class="movie-list-item">
-                                <img class="movie-list-item-img" src="img/1.jpeg" alt="">
+                                <img class="movie-list-item-img" src="img/1.jpg" alt="">
                                 <span class="movie-list-item-title">Her</span>
                                 <!--                                <button class="movie-list-item-button">Watch</button>-->
                                 <a href="homeview.jsp" class="movie-list-item-button">Watch</a>

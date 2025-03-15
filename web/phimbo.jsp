@@ -12,7 +12,9 @@
         <div class="navbar">
             <div class="navbar-container">
                 <div class="logo-container">
-                    <img class="logo" src="img/logo.jpg" alt="">
+                    <a href="home.jsp">
+                        <img src="img/logo.jpg" alt="Logo">
+                    </a>
                 </div>
                 <ul class="menu-list">
                     <li class="menu-list-item"><a href="home.jsp">TRANG CHỦ</a></li>
@@ -40,7 +42,7 @@
                         <input type="text" class="search-input" placeholder="Tìm kiếm...">
                         <i class="search-icon fas fa-search"></i>
                     </div>
-                    <i class="cart-icon fas fa-shopping-cart"></i>
+                    
                 </div>
                 <div class="profile-dropdown">
                     <a href="#" class="profile-container">
@@ -104,41 +106,43 @@
                                 <span class="movie-list-item-title">Her</span>
                                 <button class="movie-list-item-button">Watch</button>
                             </div>
+                            <div class="movie-list-item">
+                                <img class="movie-list-item-img" src="img/1.jpg" alt="">
+                                <span class="movie-list-item-title">Her</span>
+                                <button class="movie-list-item-button">Watch</button>
+                            </div>
+                            <div class="movie-list-item">
+                                <img class="movie-list-item-img" src="img/1.jpg" alt="">
+                                <span class="movie-list-item-title">Her</span>
+                                <button class="movie-list-item-button">Watch</button>
+                            </div>
+                            <div class="movie-list-item">
+                                <img class="movie-list-item-img" src="img/1.jpg" alt="">
+                                <span class="movie-list-item-title">Her</span>
+                                <button class="movie-list-item-button">Watch</button>
+                            </div>
+                            <div class="movie-list-item">
+                                <img class="movie-list-item-img" src="img/1.jpg" alt="">
+                                <span class="movie-list-item-title">Her</span>
+                                <button class="movie-list-item-button">Watch</button>
+                            </div>
+                            <div class="movie-list-item">
+                                <img class="movie-list-item-img" src="img/1.jpg" alt="">
+                                <span class="movie-list-item-title">Her</span>
+                                <button class="movie-list-item-button">Watch</button>
+                            </div>
+                            <div class="movie-list-item">
+                                <img class="movie-list-item-img" src="img/1.jpg" alt="">
+                                <span class="movie-list-item-title">Her</span>
+                                <button class="movie-list-item-button">Watch</button>
+                            </div>
+                            <div class="movie-list-item">
+                                <img class="movie-list-item-img" src="img/1.jpg" alt="">
+                                <span class="movie-list-item-title">Her</span>
+                                <button class="movie-list-item-button">Watch</button>
+                            </div>
+                            
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Giao diện chọn gói xem phim -->
-        <div class="package-overlay">
-            <div class="package-container">
-                <i class="close-icon fas fa-times"></i>
-                <h2>Chọn gói xem phim</h2>
-                <div class="packages">
-                    <div class="package basic">
-                        <h3>Gói Cơ Bản</h3>
-                        <p class="package-price">50.000đ / tháng</p>
-                        <ul>
-                            <li>Độ phân giải 720p (HD)</li>
-                            <li>Xem trên 1 thiết bị</li>
-                            <li>Có quảng cáo</li>
-                            <li>Không thể tải xuống</li>
-                            <li>Giới hạn phim</li>
-                        </ul>
-                        <button class="select-package">Chọn gói</button>
-                    </div>
-                    <div class="package premium">
-                        <h3>Gói Cao Cấp</h3>
-                        <p class="package-price">250.000đ / tháng</p>
-                        <ul>
-                            <li>Độ phân giải 4K (Ultra HD) + HDR</li>
-                            <li>Xem trên 4 thiết bị</li>
-                            <li>Không quảng cáo</li>
-                            <li>Có thể tải về để xem</li>
-                            <li>Xem không giới hạn</li>
-                        </ul>
-                        <button class="select-package">Chọn gói</button>
                     </div>
                 </div>
             </div>

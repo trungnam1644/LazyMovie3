@@ -11,7 +11,9 @@
         <div class="navbar">
             <div class="navbar-container">
                 <div class="logo-container">
-                    <img class="logo" src="img/logo.jpg" alt="">
+                    <a href="home.jsp">
+                        <img src="img/logo.jpg" alt="Logo">
+                    </a>
                 </div>
                 <ul class="menu-list">
                     <li class="menu-list-item"><a href="home.jsp">TRANG CHỦ</a></li>
@@ -39,7 +41,6 @@
                         <input type="text" class="search-input" placeholder="Tìm kiếm...">
                         <i class="search-icon fas fa-search"></i>
                     </div>
-                    <i class="cart-icon fas fa-shopping-cart"></i>
                 </div>
                 <div class="profile-dropdown">
                     <a href="#" class="profile-container">
@@ -56,39 +57,6 @@
                 </div>          
             </div>
         </div>
-        <!-- Giao diện chọn gói xem phim -->
-        <div class="package-overlay">
-            <div class="package-container">
-                <i class="close-icon fas fa-times"></i>
-                <h2>Chọn gói xem phim</h2>
-                <div class="packages">
-                    <div class="package basic">
-                        <h3>Gói Cơ Bản</h3>
-                        <p class="package-price">50.000đ / tháng</p>
-                        <ul>
-                            <li>Độ phân giải 720p (HD)</li>
-                            <li>Xem trên 1 thiết bị</li>
-                            <li>Có quảng cáo</li>
-                            <li>Không thể tải xuống</li>
-                            <li>Giới hạn phim</li>
-                        </ul>
-                        <button class="select-package">Chọn gói</button>
-                    </div>
-                    <div class="package premium">
-                        <h3>Gói Cao Cấp</h3>
-                        <p class="package-price">250.000đ / tháng</p>
-                        <ul>
-                            <li>Độ phân giải 4K (Ultra HD) + HDR</li>
-                            <li>Xem trên 4 thiết bị</li>
-                            <li>Không quảng cáo</li>
-                            <li>Có thể tải về để xem</li>
-                            <li>Xem không giới hạn</li>
-                        </ul>
-                        <button class="select-package">Chọn gói</button>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="container">
             <!-- Bên trái để trống -->
             <div class="left-sidebar"></div>
@@ -98,35 +66,47 @@
                 <!-- Video player -->
                 <div class="video-container">
                     <iframe 
-    src="https://mega.nz/embed/KphAGS4C#EACTYxLUhpRbZmwsvAZNg2QURWiUkLT2TVsUnskAS1Q" 
-    width="640" 
-    height="360" 
-    frameborder="0" 
-    allowfullscreen>
-</iframe>
-
+                        src="https://mega.nz/embed/KphAGS4C#EACTYxLUhpRbZmwsvAZNg2QURWiUkLT2TVsUnskAS1Q" 
+                        width="100%" 
+                        height="585" 
+                        frameborder="0" 
+                        allowfullscreen>
+                    </iframe>
                 </div>
 
                 <!-- Tên phim -->
-                <h1 class="movie-title">Tên phim</h1>
+                <h1 class="movie-title">Đào, Phở và Piano</h1>
 
                 <!-- Đánh giá -->
                 <div class="rating">⭐⭐⭐⭐☆ (4.5/5)</div>
 
                 <!-- Thông tin phim -->
                 <div class="details">
-                    <div class="detail-item">Diễn viên: Gorden Ramsay</div>
-                        <div class="detail-item">Quốc gia: Mỹ</div>
-                        <div class="detail-item">Thể loại: Hành động</div>
-                        <div class="detail-item">Đạo diễn: John Doe</div>
+                    <div class="detail-item">
+                        <h2> Diễn viên: </h2> 
+                        <div>
+                            Doãn Quốc Đam, Cao Thị Thùy Linh, Trần Lực, Tuấn Hưng,
+                            Thiện Hùng, Trung Hiếu, Anh Tuấn, Nguyệt Hằng, Xuân Hồng, Văn Lượng, Phạm Minh Quang,
+                            Tùng Lee, Hải Quân, Tiến Lợi, Ngọc Ánh, Thùy Trang, Bùi Hải Vy, Nguyễn Diệu Thúy .v.v..
+                        </div>
+                    </div>
+                        <div class="detail-item">Quốc gia: Việt Nam</div>
+                        <div class="detail-item">Thể loại: Tài liệu, Lãng mạn</div>
+                        <div class="detail-item">Đạo diễn: Phi Tiến Sơn</div>
                         <div class="detail-item">Năm: 2024</div>
-                        <div class="detail-item">Thời lượng: 120 phút</div>
+                        <div class="detail-item">Thời lượng: 10p34s</div>
                 </div>
 
                 <!-- Nội dung phim -->
                 <div class="description">
-                    Đây là nội dung mô tả phim, tóm tắt cốt truyện hoặc thông tin chi tiết khác...
-                </div>            
+                    <h2>Nội dung phim: </h2>
+                    <div>
+                        Phim lấy bối cảnh trận chiến đông xuân kéo dài 60 ngày đêm từ cuối năm 1946 đến đầu năm 1947 ở Hà Nội, 
+                        câu chuyện theo chân chàng dân quân Văn Dân và chuyện tình với nàng tiểu thư đam mê dương cầm Thục Hương. 
+                        Khi những người khác đã di tản lên chiến khu, họ quyết định cố thủ lại mảnh đất thủ đô đã tan hoang vì bom đạn, 
+                        mặc cho những hiểm nguy đang chờ đợi trước mắt.
+                    </div>
+                </div>        
             </div>
 
             <!-- Bên phải để trống -->
