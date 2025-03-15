@@ -1,6 +1,9 @@
 package controller.authentication;
 
+import Movie.MovieDAO;
+import Movie.MovieDTO;
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -16,6 +19,7 @@ public class MainController extends HttpServlet {
     private static final String LOGOUT_CONTROLLER = "LogoutController";
     private static final String REGISTER_CONTROLLER = "RegisterController";
     private static final String SETTYPE_CONTROLLER = "SetTypeController";
+    private static final String ADDMOVIE_PAGE = "MovieController";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -30,16 +34,24 @@ public class MainController extends HttpServlet {
                 url = LOGIN_CONTROLLER;
             } else if (action.equals("logout")) {
                 url = LOGOUT_CONTROLLER;
-            }else if (action.equals("createAccount")){
-                url = REGISTER_CONTROLLER;               
-            }else if(action.equals("SetType")){
+            } else if (action.equals("createAccount")) {
+                url = REGISTER_CONTROLLER;
+            } else if (action.equals("SetType")) {
                 url = SETTYPE_CONTROLLER;
+            } else if (action.equals("addMovie")) {
+                url = ADDMOVIE_PAGE;
+            } else if (action.equals("viewMovie")) {
+                MovieDAO movieDAO = new MovieDAO();  // Tạo đối tượng MovieDAO
+                List<MovieDTO> movieList = movieDAO.getAllMoviesWithActors(); // Gọi phương thức từ object
+
+                request.setAttribute("movies", movieList);
+                request.getRequestDispatcher("admin1.jsp").forward(request, response);              
             }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        
         request.getRequestDispatcher(url).forward(request, response);
     }
 

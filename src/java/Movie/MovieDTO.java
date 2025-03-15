@@ -22,6 +22,7 @@ public class MovieDTO {
     private String trailerURL;
     private String thumbnailURL;
     private String userName;
+    private String actors;
 
     public MovieDTO(int movieID, String title, String description, int releaseYear, String countryName, double rating, String videoURL, String trailerURL, String thumbnailURL, String userName) {
         this.movieID = movieID;
@@ -34,6 +35,13 @@ public class MovieDTO {
         this.trailerURL = trailerURL;
         this.thumbnailURL = thumbnailURL;
         this.userName = userName;
+    }
+
+    MovieDTO() {
+    }
+
+    public MovieDTO(String title, String description, int releaseYear, String country, double rating, String videoURL, String trailerURL, String thumbnailURL, String userName) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public int getMovieID() {
@@ -114,6 +122,14 @@ public class MovieDTO {
 
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    public String getActors() {
+        return actors;
+    }
+
+    public void setActors(String actors) {
+        this.actors = actors;
     }
 
     

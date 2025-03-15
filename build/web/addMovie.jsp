@@ -5,33 +5,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Thêm Phim Mới</title>
         <link rel="stylesheet" href="css/register.css">
-        <style>
-            .button-group {
-                display: flex;
-                justify-content: space-between;
-                margin-top: 20px;
-            }
-
-            .button-group button {
-                width: 48%; /* Đảm bảo hai nút có kích thước tương đương */
-            }
-
-            .back-button {
-                display: block;
-                width: fit-content;
-                margin: 20px auto;
-                padding: 10px 20px;
-                background-color: #6c757d;
-                color: white;
-                text-align: center;
-                text-decoration: none;
-                border-radius: 5px;
-            }
-
-            .back-button:hover {
-                background-color: #5a6268;
-            }
-        </style>
+        
     </head>
     <body>
         <div class="logo-lazymoive">
@@ -88,7 +62,7 @@
 
                 <div class="form-group">
                     <label for="username">Người Thêm:</label>
-                    <input type="text" id="username" name="username" value="${User.userName}" readonly>
+                    <input type="text" id="userName" name="userName" value="${User.userName}" readonly>
                 </div>
 
                 <div class="button-group">
@@ -99,3 +73,30 @@
         </div>
     </body>
 </html>
+<style>
+            .button-group {
+                display: flex;
+                justify-content: space-between;
+                margin-top: 20px;
+            }
+
+            .button-group button {
+                width: 48%;
+            }
+
+            .back-button {
+                display: block;
+                width: fit-content;
+                margin: 20px auto;
+                padding: 10px 20px;
+                background-color: #6c757d;
+                color: white;
+                text-align: center;
+                text-decoration: none;
+                border-radius: 5px;
+            }
+
+            .back-button:hover {
+                background-color: #5a6268;
+            }
+        </style>
