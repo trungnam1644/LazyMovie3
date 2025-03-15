@@ -42,7 +42,7 @@ public class MainController extends HttpServlet {
                 url = ADDMOVIE_PAGE;
             } else if (action.equals("viewMovie")) {
                 MovieDAO movieDAO = new MovieDAO();  // Tạo đối tượng MovieDAO
-                List<MovieDTO> movieList = movieDAO.getAllMoviesWithActors(); // Gọi phương thức từ object
+                List<MovieDTO> movieList = movieDAO.getAllMoviesWithActorsAndGenres(); // Gọi phương thức từ object
 
                 request.setAttribute("movies", movieList);
                 request.getRequestDispatcher("admin1.jsp").forward(request, response);              

@@ -67,7 +67,7 @@
 
                 <div class="button-group">
                     <button type="submit">Thêm Phim</button>
-                    <a href="home.jsp" class="cancel-button">Hủy</a>
+                    <a href="admin1.jsp" class="cancel-button">Hủy</a>
                 </div>
             </form>
         </div>

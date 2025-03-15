@@ -44,10 +44,15 @@ public class MovieController extends HttpServlet {
                 url = "error.jsp";
             } 
             else if (action.equals("viewMovie")) {
-                List<MovieDTO> movies = movieDAO.getAllMoviesWithActors();
-                request.setAttribute("movies", movies);
-                request.getRequestDispatcher("admin1.jsp").forward(request, response);
-            } 
+    List<MovieDTO> movies = movieDAO.getAllMoviesWithActorsAndGenres();
+    System.out.println("Movies fetched: " + movies.size()); // Debug
+    for (MovieDTO m : movies) {
+        System.out.println(m.getTitle() + " - " + m.getGenres()); // Kiểm tra dữ liệu
+    }
+    request.setAttribute("movies", movies);
+    request.getRequestDispatcher("admin1.jsp").forward(request, response);
+} 
+
             else if (action.equals("addMovie")) {
                 String title = request.getParameter("title");
                 String description = request.getParameter("description");

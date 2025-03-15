@@ -31,35 +31,40 @@
         </header>
     
         <section class="movie-list content-section">
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Tên phim</th>                        
-                        <th>Năm phát hành</th>
-                        
-                        <th>Người thêm</th>
-                        <th>Diễn viên</th>
-                        <th>Quản lý</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <c:forEach var="movie" items="${movies}">
-                        <tr>                          
-                            <td>${movie.movieID}</td>
-                            <td>${movie.title}</td>
-                            <td>${movie.releaseYear}</td>                           
-                            <td>${movie.userName}</td>
-                            <td>${movie.actors}</td> 
-                            <td>
-                                <a href="editMovie.jsp?id=${movie.movieID}" class="edit-btn">Sửa</a>
-                                <a href="deleteMovie.jsp?id=${movie.movieID}" class="delete-btn" onclick="return confirm('Bạn có chắc chắn muốn xóa không?');">Xóa</a>
-                            </td>
-                        </tr>
-                    </c:forEach>
-                </tbody>
-            </table>          
-        </section>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Tên phim</th>                        
+                <th>Năm phát hành</th>
+                <th>Quốc gia</th>
+                <th>Người thêm</th>
+                <th>Diễn viên</th> 
+                <th>Thể loại</th> 
+                <th>Quản lý</th>
+            </tr>
+        </thead>
+        <tbody>
+            <c:forEach var="movie" items="${movies}">
+                <tr>                          
+                    <td>${movie.movieID}</td>
+                    <td>${movie.title}</td>
+                    <td>${movie.releaseYear}</td> 
+                    <td>${movie.countryName}</td>
+                    <td>${movie.userName}</td>
+                    <td>${movie.actors}</td> 
+                    <td>${movie.genres}</td> 
+                    <td>
+                        <a href="editMovie.jsp?id=${movie.movieID}" class="edit-btn">Sửa</a>
+                        <a href="deleteMovie.jsp?id=${movie.movieID}" class="delete-btn" 
+                           onclick="return confirm('Bạn có chắc chắn muốn xóa không?');">Xóa</a>
+                    </td>
+                </tr>
+            </c:forEach>
+        </tbody>
+    </table>          
+</section>
+
         
 
 

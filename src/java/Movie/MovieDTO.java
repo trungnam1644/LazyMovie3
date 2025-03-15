@@ -23,6 +23,24 @@ public class MovieDTO {
     private String thumbnailURL;
     private String userName;
     private String actors;
+    private int countryID;
+    private String genres;
+
+    public String getGenres() {
+        return genres;
+    }
+
+    public void setGenres(String genres) {
+        this.genres = genres;
+    }
+
+    public int getCountryID() {
+        return countryID;
+    }
+
+    public void setCountryID(int countryID) {
+        this.countryID = countryID;
+    }
 
     public MovieDTO(int movieID, String title, String description, int releaseYear, String countryName, double rating, String videoURL, String trailerURL, String thumbnailURL, String userName) {
         this.movieID = movieID;
@@ -41,8 +59,7 @@ public class MovieDTO {
     }
 
     public MovieDTO(String title, String description, int releaseYear, String country, double rating, String videoURL, String trailerURL, String thumbnailURL, String userName) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+   }
 
     public int getMovieID() {
         return movieID;
@@ -132,6 +149,7 @@ public class MovieDTO {
         this.actors = actors;
     }
 
+   
     
 }
 
