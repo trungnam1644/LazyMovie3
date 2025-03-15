@@ -1,0 +1,196 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f0f0f0;
+    color: #333;
+    display: flex;
+}
+
+.profile-container {  
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 250px;
+    background: #333;
+    color: white;
+    padding: 20px 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sidebar-profile {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.sidebar-avatar {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    margin-bottom: 10px;
+}
+
+.sidebar-profile h2 {
+    font-size: 18px;
+    color: #fff;
+}
+
+.sidebar ul {
+    list-style: none;
+    width: 100%;
+    padding: 0;
+}
+
+.sidebar ul li {
+    width: 100%;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 12px 20px;
+    border-radius: 4px;
+    transition: background 0.3s;
+}
+
+.sidebar ul li a:hover {
+    background: #444;
+}
+
+.sidebar ul li a.active {
+    background: #555;
+}
+
+.sidebar ul li .logout-btn {
+    background: red;
+    color: white;
+    padding: 10px 15px;
+    margin: 10px 20px;
+    display: block;
+    text-align: center;
+    border-radius: 4px;
+    transition: background 0.3s;
+}
+
+.sidebar ul li .logout-btn:hover {
+    background: darkred;
+}
+
+/* =====================
+   CONTENT
+===================== */
+.content {
+    flex: 1;
+    padding: 20px;
+    background: #f0f0f0;
+}
+
+/* HEADER */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f8f8f8;
+    padding: 15px 20px;
+    border-bottom: 2px solid #ddd;
+}
+
+header h2 {
+    font-size: 24px;
+    color: #333;
+}
+
+header .logout-btn {
+    background: red;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background 0.3s;
+}
+
+header .logout-btn:hover {
+    background: darkred;
+}
+
+/* =====================
+   PROFILE INFO
+===================== */
+.profile-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.profile-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    padding: 20px;
+    flex: 1 1 500px;
+}
+
+/* AVATAR Ở TRONG PROFILE CARD */
+.profile-avatar {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto 20px;
+    border: 2px solid #ddd;
+}
+
+/* TABLE HIỂN THỊ THÔNG TIN */
+.profile-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.profile-table td {
+    padding: 12px 10px;
+    border-bottom: 1px solid #eee;
+    color: #333;
+}
+
+.profile-table td:first-child {
+    font-weight: bold;
+    width: 40%;
+    color: #555;
+}
+
+.profile-table td:last-child {
+    color: #111;
+}
+
+.profile-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.logout-btn {
+    background: red;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 4px;
+    transition: background 0.3s;
+}
+
+.logout-btn:hover {
+    background: darkred;
+}

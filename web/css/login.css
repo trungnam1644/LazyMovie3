@@ -1,0 +1,135 @@
+/* Đặt font chữ chung và nền */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-image: url(../img/background.jpg);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Lớp phủ tối (độ mờ 60%) */
+    z-index: -1; /* Để lớp phủ nằm dưới nội dung */
+}
+
+/* Container của form */
+.login-container {
+    background-color: #fff;
+    width: 350px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Tiêu đề của form */
+h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Cách bố trí của mỗi nhóm form */
+.form-group {
+    margin-bottom: 15px;
+}
+
+/* Label của mỗi ô nhập liệu */
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #555;
+    letter-spacing: 3px; 
+}
+
+/* Ô nhập liệu */
+.form-group input[type="text"],
+.form-group input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 14px;
+    background-color: #f9f9f9;
+    transition: all 0.3s ease;
+}
+
+/* Hiệu ứng khi focus vào ô nhập liệu */
+.form-group input:focus {
+    border-color: #4CAF50;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+    background-color: #fff;
+}
+
+/* Checkbox "Ghi Nhớ Mật Khẩu" */
+.remember-me {
+    display: flex;
+    align-items: center;
+}
+
+.remember-me input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+/* Nút Đăng Nhập */
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #060c06;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+/* Hiệu ứng khi rê chuột vào nút */
+button:hover {
+    background-color: #45a049;
+}
+
+/* Liên kết Quên Mật Khẩu */
+.forgot-password {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.forgot-password a {
+    color: #010201;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.forgot-password a:hover {
+    text-decoration: underline;
+}
+
+.logo-lazymoive {
+    position: absolute;
+    top: 20px; /* Cách mép trên 20px */
+    left: 50px; /* Cách mép trái 20px */
+    display: flex;
+    align-items: center;
+   
+}
+
+.logo-lazymoive img {
+    width: 150px;
+    border-radius: 50%;
+    border: 5px solid rgb(212, 28, 28);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
