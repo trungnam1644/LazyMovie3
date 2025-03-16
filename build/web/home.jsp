@@ -4,6 +4,10 @@
 <c:if test="${User == null}">
     <c:redirect url="login.jsp" />
 </c:if>
+<c:if test="${movies == null}">
+    <c:redirect url="MainController?action=viewMovieInHome"/>
+</c:if>
+
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -89,164 +93,84 @@
                     </div>
                 </div>
                 <div class="movie-list-container">
-                    <h1 class="movie-list-title">PHIM CHIẾU RẠP </h1>
+                    <h1 class="movie-list-title">DANH SÁCH PHIM</h1>
                     <div class="movie-list-wrapper">
                         <div class="movie-list">
-                            <div class="movie-list-item">
-                                <img class="movie-list-item-img" src="img/1.jpg" alt="">
-                                <span class="movie-list-item-title">Her</span>
-                                <!--                                <button class="movie-list-item-button">Watch</button>-->
-                                <a href="homeview.jsp" class="movie-list-item-button">Watch</a>
+                            <c:forEach var="movie" items="${movies}">
+                                <div class="movie-list-item">
+                                    <img class="movie-list-item-img" src="${movie.thumbnailURL}" alt="${movie.title}">
+                                    <span class="movie-rating"><i class="fas fa-star"></i> ${movie.rating}</span>
+                                    <span class="movie-list-item-title">${movie.title}</span>
+                                    <a href="MainController?action=viewMovieVideo&movieID=${movie.movieID}" class="movie-list-item-button">Watch</a>
+                                </div>
+
+                            </c:forEach>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Giao diện chọn gói xem phim -->
+                <div class="package-overlay">
+                    <div class="package-container">
+                        <i class="close-icon fas fa-times"></i>
+                        <h2>Chọn gói xem phim</h2>
+                        <div class="packages">
+                            <div class="package basic">
+                                <h3>Gói Cơ Bản</h3>
+                                <p class="package-price">50.000đ / tháng</p>
+                                <ul>
+                                    <li>Độ phân giải 720p (HD)</li>
+                                    <li>Xem trên 1 thiết bị</li>
+                                    <li>Có quảng cáo</li>
+                                    <li>Không thể tải xuống</li>
+                                    <li>Giới hạn phim</li>
+                                </ul>
+                                <button class="select-package" onclick="selectPackage(1)">Chọn gói</button>
                             </div>
-                            <div class="movie-list-item">
-                                <img class="movie-list-item-img" src="img/2.jpeg" alt="">
-                                <span class="movie-list-item-title">Star Wars</span>
-                                <button class="movie-list-item-button">Watch</button>
-                            </div>
-                            <div class="movie-list-item">
-                                <img class="movie-list-item-img" src="img/3.jpg" alt="">
-                                <span class="movie-list-item-title">Storm</span>
-                                <button class="movie-list-item-button">Watch</button>
-                            </div>
-                            <div class="movie-list-item">
-                                <img class="movie-list-item-img" src="img/4.jpg" alt="">
-                                <span class="movie-list-item-title">1917</span>
-                                <button class="movie-list-item-button">Watch</button>
-                            </div>
-                            <div class="movie-list-item">
-                                <img class="movie-list-item-img" src="img/5.jpg" alt="">
-                                <span class="movie-list-item-title">Avengers</span>
-                                <button class="movie-list-item-button">Watch</button>
-                            </div>
-                            <div class="movie-list-item">
-                                <img class="movie-list-item-img" src="img/6.jpg" alt="">
-                                <span class="movie-list-item-title">Her</span>
-                                <button class="movie-list-item-button">Watch</button>
-                            </div>
-                            <div class="movie-list-item">
-                                <img class="movie-list-item-img" src="img/7.jpg" alt="">
-                                <span class="movie-list-item-title">Her</span>
-                                <button class="movie-list-item-button">Watch</button>
-                            </div>
-                            <div class="movie-list-item">
-                                <img class="movie-list-item-img" src="img/1.jpg" alt="">
-                                <span class="movie-list-item-title">Her</span>
-                                <button class="movie-list-item-button">Watch</button>
+                            <div class="package premium">
+                                <h3>Gói Cao Cấp</h3>
+                                <p class="package-price">250.000đ / tháng</p>
+                                <ul>
+                                    <li>Độ phân giải 4K (Ultra HD) + HDR</li>
+                                    <li>Xem trên 4 thiết bị</li>
+                                    <li>Không quảng cáo</li>
+                                    <li>Có thể tải về để xem</li>
+                                    <li>Xem không giới hạn</li>
+                                </ul>
+                                <button class="select-package" onclick="selectPackage(2)">Chọn gói</button>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="movie-list-container">
-                    <h1 class="movie-list-title">PHIM LẺ</h1>
-                    <div class="movie-list-wrapper">
-                        <div class="movie-list">
-                            <div class="movie-list-item">
-                                <img class="movie-list-item-img" src="img/8.jpg" alt="">
-                                <span class="movie-list-item-title">Her</span>
-                                <button class="movie-list-item-button">Watch</button>
-                            </div>
-                            <div class="movie-list-item">
-                                <img class="movie-list-item-img" src="img/9.jpg" alt="">
-                                <span class="movie-list-item-title">Her</span>
-                                <button class="movie-list-item-button">Watch</button>
-                            </div>
-                            <div class="movie-list-item">
-                                <img class="movie-list-item-img" src="img/10.jpg" alt="">
-                                <span class="movie-list-item-title">Her</span>
-                                <button class="movie-list-item-button">Watch</button>
-                            </div>
-                            <div class="movie-list-item">
-                                <img class="movie-list-item-img" src="img/11.jpg" alt="">
-                                <span class="movie-list-item-title">Her</span>
-                                <button class="movie-list-item-button">Watch</button>
-                            </div>
-                            <div class="movie-list-item">
-                                <img class="movie-list-item-img" src="img/12.jpg" alt="">
-                                <span class="movie-list-item-title">Her</span>
-                                <button class="movie-list-item-button">Watch</button>
-                            </div>
-                            <div class="movie-list-item">
-                                <img class="movie-list-item-img" src="img/1.jpg" alt="">
-                                <span class="movie-list-item-title">Her</span>
-                                <button class="movie-list-item-button">Watch</button>
-                            </div>
-                            <div class="movie-list-item">
-                                <img class="movie-list-item-img" src="img/1.jpg" alt="">
-                                <span class="movie-list-item-title">Her</span>
-                                <button class="movie-list-item-button">Watch</button>
-                            </div>
-                            <div class="movie-list-item">
-                                <img class="movie-list-item-img" src="img/1.jpg" alt="">
-                                <span class="movie-list-item-title">Her</span>
-                                <button class="movie-list-item-button">Watch</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        <!-- Giao diện chọn gói xem phim -->
-        <div class="package-overlay">
-            <div class="package-container">
-                <i class="close-icon fas fa-times"></i>
-                <h2>Chọn gói xem phim</h2>
-                <div class="packages">
-                    <div class="package basic">
-                        <h3>Gói Cơ Bản</h3>
-                        <p class="package-price">50.000đ / tháng</p>
-                        <ul>
-                            <li>Độ phân giải 720p (HD)</li>
-                            <li>Xem trên 1 thiết bị</li>
-                            <li>Có quảng cáo</li>
-                            <li>Không thể tải xuống</li>
-                            <li>Giới hạn phim</li>
-                        </ul>
-                        <button class="select-package" onclick="selectPackage(1)">Chọn gói</button>
-                    </div>
-                    <div class="package premium">
-                        <h3>Gói Cao Cấp</h3>
-                        <p class="package-price">250.000đ / tháng</p>
-                        <ul>
-                            <li>Độ phân giải 4K (Ultra HD) + HDR</li>
-                            <li>Xem trên 4 thiết bị</li>
-                            <li>Không quảng cáo</li>
-                            <li>Có thể tải về để xem</li>
-                            <li>Xem không giới hạn</li>
-                        </ul>
-                        <button class="select-package" onclick="selectPackage(2)">Chọn gói</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Form ẩn để gửi dữ liệu -->
-        <form id="packageForm" action="MainController" method="post">
-            <input type="hidden" name="action" value="SetType">
-            <input type="hidden" name="typeID" id="typeID">
-            <input type="hidden" name="userID" id="userID">
+                <!-- Form ẩn để gửi dữ liệu -->
+                <form id="packageForm" action="MainController" method="post">
+                    <input type="hidden" name="action" value="SetType">
+                    <input type="hidden" name="typeID" id="typeID">
+                    <input type="hidden" name="userID" id="userID">
 
 
-        </form>
+                </form>
 
-        <script>
-            function selectPackage(typeID) {
-                let userID = "${sessionScope.User.userID}"; // Lấy userID từ session
-                document.getElementById("typeID").value = typeID;
-                document.getElementById("userID").value = userID;
-                document.getElementById("packageForm").submit();
+                <script>
+                    function selectPackage(typeID) {
+                        let userID = "${sessionScope.User.userID}"; // Lấy userID từ session
+                        document.getElementById("typeID").value = typeID;
+                        document.getElementById("userID").value = userID;
+                        document.getElementById("packageForm").submit();
 
-            }
-        </script>
+                    }
+                </script>
 
 
-        <footer class="footer">
-            <p><a>Bạn có câu hỏi? Xin hãy liên hệ với chúng tôi.</a></p>
-            <p>SDT: 8429012025</p>
-            <p>Email: LazyMovie@fpt.vip.vn</p>
-            <p>&copy; LazyMovie. LazyMovie.com.vn</p>
-        </footer>
-        <script src="app.js"></script>
+                <footer class="footer">
+                    <p><a>Bạn có câu hỏi? Xin hãy liên hệ với chúng tôi.</a></p>
+                    <p>SDT: 8429012025</p>
+                    <p>Email: LazyMovie@fpt.vip.vn</p>
+                    <p>&copy; LazyMovie. LazyMovie.com.vn</p>
+                </footer>
+                <script src="app.js"></script>
 
-    </body>  
-</html>
+                </body>  
+                </html>

@@ -98,7 +98,17 @@ public class MovieDTO {
         this.thumbnailURL = thumbnailURL;
         this.userName = userName;
     }
-
+ public MovieDTO(int movieID, String title, String description, int releaseYear,  double rating, String videoURL, String trailerURL, String thumbnailURL, String userName) {
+        this.movieID = movieID;
+        this.title = title;
+        this.description = description;
+        this.releaseYear = releaseYear;      
+        this.rating = rating;
+        this.videoURL = videoURL;
+        this.trailerURL = trailerURL;
+        this.thumbnailURL = thumbnailURL;
+        this.userName = userName;
+    }
     
 
     public int getMovieID() {

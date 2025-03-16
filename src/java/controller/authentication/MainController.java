@@ -25,8 +25,8 @@ public class MainController extends HttpServlet {
     private static final String MOVIE_PAGE = "MovieController";
     private static final String VIEWCREATE_PAGE = "CreatePageController";
     private static final String DELETEMOVIE_PAGE = "DeleteMovieController";
-    private static final String EDITMOVIE_PAGE = "excuteEditController";
-    
+    private static final String EDITMOVIE_PAGE = "excuteEditController";   
+    private static final String VIEWMOVIEVIDEO_PAGE = "ViewMovieVideoController";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -53,12 +53,21 @@ public class MainController extends HttpServlet {
             } else if (action.equals("deleteMovie")) {
                 url = DELETEMOVIE_PAGE;
             } else if (action.equals("excuteeditMovie")) {
-                url = EDITMOVIE_PAGE;           
+                url = EDITMOVIE_PAGE;
             } else if (action.equals("viewMovie")) {
                 MovieDAO movieDAO = new MovieDAO();
                 List<MovieDTO> movieList = movieDAO.getAllMovies();
                 request.setAttribute("movies", movieList);
                 request.getRequestDispatcher("admin1.jsp").forward(request, response);
+            } else if (action.equals("viewMovieInHome")) {               
+                    MovieDAO movieDAO = new MovieDAO();
+                    List<MovieDTO> movieList = movieDAO.getAllMovies();
+                    request.setAttribute("movies", movieList);
+                    url = "home.jsp"; // Đảm bảo chuyển hướng đúng
+                
+
+            } else if (action.equals("viewMovieVideo")){
+                url = VIEWMOVIEVIDEO_PAGE;
             }
         } catch (Exception e) {
             e.printStackTrace();

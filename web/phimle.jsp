@@ -18,7 +18,7 @@
                 </div>
                 <ul class="menu-list">
                     <li class="menu-list-item"><a href="home.jsp">TRANG CHỦ</a></li>
-                    <li class="menu-list-item"><a href="phimbo.jsp">PHIM BỘ</a></li>
+                    <li class="menu-list-item"><a href="phimbo.jsp">PHIM CHIẾU RẠP</a></li>
                     <li class="menu-list-item"><a href="phimle.jsp">PHIM LẺ</a></li>
                     <li class="menu-list-item genre-dropdown">
                         <a href="#">THỂ LOẠI</a>
@@ -62,7 +62,7 @@
         <div class="container">
             <div class="content-container">
                 <div class="movie-list-container">
-                    <h1 class="movie-list-title">PHIM LẺ MỚI CẬP NHẬT</h1>
+                    <h1 class="movie-list-title">PHIM LẺ </h1>
                     <div class="movie-list-wrapper">
                         <div class="movie-list">
                             <div class="movie-list-item">

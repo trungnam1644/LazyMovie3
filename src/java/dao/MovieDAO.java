@@ -231,6 +231,48 @@ public class MovieDAO {
     return null;
     }
     
+    
+    public MovieDTO getMovieByID2(int movieID) {
+    String sql = "SELECT m.MovieID, m.Title, m.Description, m.ReleaseYear, c.CountryName, "
+               + "m.Rating, m.VideoURL, m.TrailerURL, m.ThumbnailURL, u.UserName, "
+               + "(SELECT GROUP_CONCAT(a.ActorName SEPARATOR ', ') FROM Actor a "
+               + " JOIN MovieActor ma ON a.ActorID = ma.ActorID WHERE ma.MovieID = m.MovieID) AS Actors, "
+               + "(SELECT GROUP_CONCAT(g.GenreName SEPARATOR ', ') FROM Genre g "
+               + " JOIN MovieGenre mg ON g.GenreID = mg.GenreID WHERE mg.MovieID = m.MovieID) AS Genres "
+               + "FROM Movie m "
+               + "JOIN Country c ON m.CountryID = c.CountryID "
+               + "JOIN User u ON m.UserID = u.UserID "
+               + "WHERE m.MovieID = ?";
+
+    try (Connection conn = DBUtils.getConnection();
+         PreparedStatement stmt = conn.prepareStatement(sql)) {
+        stmt.setInt(1, movieID);
+        try (ResultSet rs = stmt.executeQuery()) {
+            if (rs.next()) {
+                MovieDTO movie = new MovieDTO(
+                    rs.getInt("MovieID"),
+                    rs.getString("Title"),
+                    rs.getString("Description"),
+                    rs.getInt("ReleaseYear"),
+                    rs.getDouble("Rating"),
+                    rs.getString("VideoURL"),
+                    rs.getString("TrailerURL"),
+                    rs.getString("ThumbnailURL"),
+                    rs.getString("UserName")
+                );
+                movie.setCountryName(rs.getString("CountryName"));
+                movie.setActors(rs.getString("Actors")); 
+                movie.setGenres(rs.getString("Genres"));
+                return movie;
+            }
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+    return null;
+}
+
+    
     public static void main(String[] args) {
         MovieDAO movieDAO = new MovieDAO(); // Tạo instance của DAO
         int testMovieID = 1; // Thay đổi ID này để kiểm tra với dữ liệu trong DB

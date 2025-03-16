@@ -1,4 +1,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<% if (request.getAttribute("movie") == null) { %>
+<p style="color:red;">Không tìm thấy dữ liệu phim.</p>
+<% }%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -66,61 +70,35 @@
                 <!-- Video player -->
                 <div class="video-container">
                     <iframe 
-                        src="https://mega.nz/embed/KphAGS4C#EACTYxLUhpRbZmwsvAZNg2QURWiUkLT2TVsUnskAS1Q" 
-                        width="100%" 
-                        height="585" 
+                        src="${movie.videoURL}" 
                         frameborder="0" 
                         allowfullscreen>
                     </iframe>
                 </div>
 
-                <!-- Tên phim -->
-                <h1 class="movie-title">Đào, Phở và Piano</h1>
 
-                <!-- Đánh giá -->
-                <div class="rating">⭐⭐⭐⭐☆ (4.5/5)</div>
+               <h1 class="movie-title" style="background: red; color: white; z-index: 999;">
+    ${movie.title}
+</h1>
 
-                <!-- Thông tin phim -->
-                <div class="details">
-                    <div class="detail-item">
-                        <h2> Diễn viên: </h2> 
-                        <div>
-                            Doãn Quốc Đam, Cao Thị Thùy Linh, Trần Lực, Tuấn Hưng,
-                            Thiện Hùng, Trung Hiếu, Anh Tuấn, Nguyệt Hằng, Xuân Hồng, Văn Lượng, Phạm Minh Quang,
-                            Tùng Lee, Hải Quân, Tiến Lợi, Ngọc Ánh, Thùy Trang, Bùi Hải Vy, Nguyễn Diệu Thúy .v.v..
-                        </div>
-                    </div>
-                        <div class="detail-item">Quốc gia: Việt Nam</div>
-                        <div class="detail-item">Thể loại: Tài liệu, Lãng mạn</div>
-                        <div class="detail-item">Đạo diễn: Phi Tiến Sơn</div>
-                        <div class="detail-item">Năm: 2024</div>
-                        <div class="detail-item">Thời lượng: 10p34s</div>
-                </div>
+                <p class="description">${movie.description}</p>
+                <p><strong>Diễn viên:</strong> ${movie.actors}</p>
+                <p><strong>Thể loại:</strong> ${movie.genres}</p>
+                <p><strong>Năm:</strong> ${movie.releaseYear}</p>
+                <p><strong>Quốc gia:</strong> ${movie.countryName}</p>
 
-                <!-- Nội dung phim -->
-                <div class="description">
-                    <h2>Nội dung phim: </h2>
-                    <div>
-                        Phim lấy bối cảnh trận chiến đông xuân kéo dài 60 ngày đêm từ cuối năm 1946 đến đầu năm 1947 ở Hà Nội, 
-                        câu chuyện theo chân chàng dân quân Văn Dân và chuyện tình với nàng tiểu thư đam mê dương cầm Thục Hương. 
-                        Khi những người khác đã di tản lên chiến khu, họ quyết định cố thủ lại mảnh đất thủ đô đã tan hoang vì bom đạn, 
-                        mặc cho những hiểm nguy đang chờ đợi trước mắt.
-                    </div>
-                </div>        
+                <!-- Bên phải để trống -->
+                <div class="right-sidebar"></div>
             </div>
 
-            <!-- Bên phải để trống -->
-            <div class="right-sidebar"></div>
-          </div>
-        
-        <footer class="footer">
-            <p><a>Bạn có câu hỏi? Xin hãy liên hệ với chúng tôi.</a></p>
-            <p>SDT: 8429012025</p>
-            <p>Email: LazyMovie@fpt.vip.vn</p>
-            <p>&copy; LazyMovie. LazyMovie.com.vn</p>
-        </footer>
+            <footer class="footer">
+                <p><a>Bạn có câu hỏi? Xin hãy liên hệ với chúng tôi.</a></p>
+                <p>SDT: 8429012025</p>
+                <p>Email: LazyMovie@fpt.vip.vn</p>
+                <p>&copy; LazyMovie. LazyMovie.com.vn</p>
+            </footer>
 
 
-        <script src="app.js"></script>
+            <script src="app.js"></script>
     </body>
 </html>

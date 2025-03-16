@@ -40,6 +40,10 @@
         <servlet-name>excuteEditController</servlet-name>
         <servlet-class>controller.excuteEditController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ViewMovieVideoController</servlet-name>
+        <servlet-class>controller.ViewMovieVideoController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
         <url-pattern>/LoginController</url-pattern>
@@ -96,6 +100,10 @@
     <servlet-mapping>
         <servlet-name>excuteEditController</servlet-name>
         <url-pattern>/excuteEditController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewMovieVideoController</servlet-name>
+        <url-pattern>/ViewMovieVideoController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
