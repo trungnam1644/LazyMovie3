@@ -24,6 +24,8 @@ public class MovieDAO {
 
     try (Connection conn = DBUtils.getConnection();
          PreparedStatement stmt = conn.prepareStatement(sql)) {
+         
+        System.out.println("Adding movie: " + movie.getTitle());
 
         stmt.setString(1, movie.getTitle());
         stmt.setString(2, movie.getDescription());
@@ -41,7 +43,7 @@ public class MovieDAO {
     }
     return false;
 }
-  public List<MovieDTO> getAllMoviesWithActorsAndGenres() {
+  public List<MovieDTO> getAllMovies() {
     List<MovieDTO> movieList = new ArrayList<>();
     String sql = "SELECT m.MovieID, m.Title, m.Description, m.ReleaseYear, " +
                  "c.CountryName, " +
@@ -95,7 +97,7 @@ public static void main(String[] args) {
         MovieDAO movieDAO = new MovieDAO();
         
         // Gọi phương thức lấy danh sách phim có diễn viên và thể loại
-        List<MovieDTO> movies = movieDAO.getAllMoviesWithActorsAndGenres();
+        List<MovieDTO> movies = movieDAO.getAllMovies();
         
         // In thông tin các phim ra console để kiểm tra
         if(movies != null && !movies.isEmpty()){
@@ -118,6 +120,7 @@ public static void main(String[] args) {
         } else {
             System.out.println("Không có dữ liệu phim để hiển thị!");
         }
+        
     }
 
 }

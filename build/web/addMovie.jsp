@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -5,7 +6,6 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Thêm Phim Mới</title>
         <link rel="stylesheet" href="css/register.css">
-        
     </head>
     <body>
         <div class="logo-lazymoive">
@@ -13,7 +13,6 @@
                 <img src="img/logo.jpg" alt="Logo">
             </a>    
         </div>
-
 
         <div class="form-container">
             <h2>Thêm Phim Mới</h2>
@@ -35,9 +34,16 @@
                     <input type="number" id="releaseYear" name="releaseYear" min="1900" max="2100" required>
                 </div>
 
+                <!-- Chọn quốc gia từ danh sách -->
                 <div class="form-group">
                     <label for="country">Quốc Gia:</label>
-                    <input type="text" id="country" name="country" placeholder="Nhập quốc gia" required>
+                    <select id="country" name="country" required>
+                        <option value="">Chọn quốc gia</option>
+                        <!-- Duyệt qua danh sách các quốc gia -->
+                        <c:forEach var="country" items="${countries}">
+                            <option value="${country.countryID}">${country.countryName}</option>
+                        </c:forEach>
+                    </select>
                 </div>
 
                 <div class="form-group">
@@ -73,30 +79,31 @@
         </div>
     </body>
 </html>
+
 <style>
-            .button-group {
-                display: flex;
-                justify-content: space-between;
-                margin-top: 20px;
-            }
+    .button-group {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+    }
 
-            .button-group button {
-                width: 48%;
-            }
+    .button-group button {
+        width: 48%;
+    }
 
-            .back-button {
-                display: block;
-                width: fit-content;
-                margin: 20px auto;
-                padding: 10px 20px;
-                background-color: #6c757d;
-                color: white;
-                text-align: center;
-                text-decoration: none;
-                border-radius: 5px;
-            }
+    .back-button {
+        display: block;
+        width: fit-content;
+        margin: 20px auto;
+        padding: 10px 20px;
+        background-color: #6c757d;
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 5px;
+    }
 
-            .back-button:hover {
-                background-color: #5a6268;
-            }
-        </style>
+    .back-button:hover {
+        background-color: #5a6268;
+    }
+</style>

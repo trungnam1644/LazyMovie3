@@ -26,6 +26,9 @@ public class MovieDTO {
     private int countryID;
     private String genres;
 
+    public MovieDTO(String title, String description, int releaseYear, int countryID, double rating, String videoURL, String trailerURL, String thumbnailURL, String userName) {
+    }
+
     public String getGenres() {
         return genres;
     }

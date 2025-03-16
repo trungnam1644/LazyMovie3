@@ -24,6 +24,10 @@
         <servlet-name>MovieController</servlet-name>
         <servlet-class>controller.MovieController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CreatePageController</servlet-name>
+        <servlet-class>controller.CreatePageController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
         <url-pattern>/LoginController</url-pattern>
@@ -65,9 +69,14 @@
         <servlet-name>MovieController</servlet-name>
         <url-pattern>/MovieController</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CreatePageController</servlet-name>
+        <url-pattern>/CreatePageController</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
+    
 </web-app>

@@ -1,8 +1,11 @@
 package controller.authentication;
 
+import Country.CountryDAO;
+import Country.CountryDTO;
 import Movie.MovieDAO;
 import Movie.MovieDTO;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -20,11 +23,13 @@ public class MainController extends HttpServlet {
     private static final String REGISTER_CONTROLLER = "RegisterController";
     private static final String SETTYPE_CONTROLLER = "SetTypeController";
     private static final String ADDMOVIE_PAGE = "MovieController";
+    private static final String VIEWCREATE_PAGE = "CreatePageController";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String url = ERROR_PAGE;
+        
         String action = request.getParameter("action");
 
         try {
@@ -39,13 +44,20 @@ public class MainController extends HttpServlet {
             } else if (action.equals("SetType")) {
                 url = SETTYPE_CONTROLLER;
             } else if (action.equals("addMovie")) {
-                url = ADDMOVIE_PAGE;
-            } else if (action.equals("viewMovie")) {
-                MovieDAO movieDAO = new MovieDAO();  // Tạo đối tượng MovieDAO
-                List<MovieDTO> movieList = movieDAO.getAllMoviesWithActorsAndGenres(); // Gọi phương thức từ object
+                url = "MovieController?action=addMovie";
+            }else if(action.equals("createpage")){
+               url = VIEWCREATE_PAGE;
+                
+                
+                
+            }
+            
+            else if (action.equals("viewMovie")) {
+                MovieDAO movieDAO = new MovieDAO();
+                List<MovieDTO> movieList = movieDAO.getAllMovies();
 
                 request.setAttribute("movies", movieList);
-                request.getRequestDispatcher("admin1.jsp").forward(request, response);              
+                request.getRequestDispatcher("admin1.jsp").forward(request, response);
             }
 
         } catch (Exception e) {
