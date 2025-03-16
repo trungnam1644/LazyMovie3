@@ -27,11 +27,47 @@ public class MovieDTO {
     private String genres;
 
     public MovieDTO(String title, String description, int releaseYear, int countryID, double rating, String videoURL, String trailerURL, String thumbnailURL, String userName) {
+   this.title = title;
+   this.description = description;
+   this.releaseYear = releaseYear;
+   this.countryID = countryID;
+   this.rating = rating;
+   this.videoURL = videoURL;
+        this.trailerURL = trailerURL;
+        this.thumbnailURL = thumbnailURL;
+         this.userName = userName;
+   
     }
 
     public MovieDTO() {
      }
 
+    
+
+    public MovieDTO(String title, String description, int releaseYear , double rating, String videoURL, String trailerURL, String thumbnailURL, String userName) {
+        this.title = title;
+        this.description = description;
+        this.releaseYear = releaseYear;
+        this.rating = rating;
+        this.videoURL = videoURL;
+        this.trailerURL = trailerURL;
+        this.thumbnailURL = thumbnailURL;
+        this.userName = userName;
+    }
+
+   
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     public String getGenres() {
         return genres;
     }
@@ -49,7 +85,7 @@ public class MovieDTO {
     }
 
     public MovieDTO(int movieID, String title, String description, int releaseYear, String countryName, double rating, String videoURL, String trailerURL, String thumbnailURL, String userName) {
-        this.movieID = movieID;
+       
         this.title = title;
         this.description = description;
         this.releaseYear = releaseYear;
@@ -62,9 +98,6 @@ public class MovieDTO {
     }
 
     
-
-    public MovieDTO(String title, String description, int releaseYear, String country, double rating, String videoURL, String trailerURL, String thumbnailURL, String userName) {
-   }
 
     public int getMovieID() {
         return movieID;

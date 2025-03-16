@@ -26,7 +26,7 @@ public class MovieDAO {
     try (Connection conn = DBUtils.getConnection();
          PreparedStatement stmt = conn.prepareStatement(sql)) {
          
-        System.out.println("Adding movie: " + movie.getTitle());
+//        System.out.println("Adding movie: " + movie.getTitle());
 
         stmt.setString(1, movie.getTitle());
         stmt.setString(2, movie.getDescription());
@@ -93,36 +93,82 @@ public class MovieDAO {
     }
     return movieList;
 }
-public static void main(String[] args) {
-        // Khởi tạo MovieDAO
-        MovieDAO movieDAO = new MovieDAO();
-        
-        // Gọi phương thức lấy danh sách phim có diễn viên và thể loại
-        List<MovieDTO> movies = movieDAO.getAllMovies();
-        
-        // In thông tin các phim ra console để kiểm tra
-        if(movies != null && !movies.isEmpty()){
-            for (MovieDTO movie : movies) {
-                System.out.println("--------------------------------------------------");
-                System.out.println("Movie ID: " + movie.getMovieID());
-                System.out.println("Title: " + movie.getTitle());
-                System.out.println("Description: " + movie.getDescription());
-                System.out.println("Release Year: " + movie.getReleaseYear());
-                System.out.println("Country: " + movie.getCountryName());
-                System.out.println("Rating: " + movie.getRating());
-                System.out.println("Video URL: " + movie.getVideoURL());
-                System.out.println("Trailer URL: " + movie.getTrailerURL());
-                System.out.println("Thumbnail URL: " + movie.getThumbnailURL());
-                System.out.println("User Name: " + movie.getUserName());
-                System.out.println("Actors: " + movie.getActors());
-                System.out.println("Genres: " + movie.getGenres());
-                System.out.println("--------------------------------------------------\n");
+  public boolean setGenresForMovie(int movieID, List<Integer> genreIDs) {
+    String sql = "INSERT INTO MovieGenre (MovieID, GenreID) VALUES (?, ?)";
+
+    try (Connection conn = DBUtils.getConnection()) {
+        for (Integer genreID : genreIDs) {
+            try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+                stmt.setInt(1, movieID);
+                stmt.setInt(2, genreID);
+                stmt.executeUpdate();
             }
-        } else {
-            System.out.println("Không có dữ liệu phim để hiển thị!");
         }
-        
+        return true;
+    } catch (Exception e) {
+        e.printStackTrace();
     }
+    return false;
+}
+
+
+  public int getMovieIDByTitle(String title) {
+    String sql = "SELECT MovieID FROM Movie WHERE Title = ?";
+    
+    try (Connection conn = DBUtils.getConnection();
+         PreparedStatement stmt = conn.prepareStatement(sql)) {
+        
+        stmt.setString(1, title);
+        try (ResultSet rs = stmt.executeQuery()) {
+            if (rs.next()) {
+                return rs.getInt("MovieID");
+            }
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+    return -1; 
+}
+
+  public static void main(String[] args) {
+    // Tạo đối tượng MovieDTO
+    MovieDTO movie = new MovieDTO();
+    movie.setTitle("Avengers: Endgame");
+    movie.setDescription("The Avengers assemble once more to reverse the damage caused by Thanos.");
+    movie.setReleaseYear(2019);
+    movie.setCountryID(1); // Ví dụ: quốc gia với ID = 1
+    movie.setRating(4.5);
+    movie.setVideoURL("https://www.youtube.com/watch?v=TcMBFSGVi1c");
+    movie.setTrailerURL("https://www.youtube.com/watch?v=TcMBFSGVi1c");
+    movie.setThumbnailURL("https://example.com/thumbnail.jpg");
+    movie.setUserName("admin1");
+
+    // Tạo đối tượng MovieDAO để gọi phương thức addMovie
+    MovieDAO movieDAO = new MovieDAO();
+    
+    // Gọi phương thức addMovie để thêm phim vào cơ sở dữ liệu
+    boolean isAdded = movieDAO.addMovie(movie);
+    
+    // Kiểm tra kết quả
+    if (isAdded) {
+        System.out.println("Movie added successfully!");
+        
+        // Sau khi thêm phim thành công, thêm thể loại cho phim
+        int movieID = movieDAO.getMovieIDByTitle("Avengers: Endgame"); // Lấy MovieID của phim vừa thêm
+        List<Integer> genreIDs = new ArrayList<>();
+        genreIDs.add(1); // Ví dụ: thể loại với ID = 1
+        genreIDs.add(2); // Ví dụ: thể loại với ID = 2
+        
+        boolean isGenresAdded = movieDAO.setGenresForMovie(movieID, genreIDs);
+        if (isGenresAdded) {
+            System.out.println("Genres added successfully!");
+        } else {
+            System.out.println("Failed to add genres.");
+        }
+    } else {
+        System.out.println("Failed to add movie.");
+    }
+}
 
 }
 

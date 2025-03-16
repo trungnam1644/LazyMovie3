@@ -44,7 +44,7 @@ public class MainController extends HttpServlet {
             } else if (action.equals("SetType")) {
                 url = SETTYPE_CONTROLLER;
             } else if (action.equals("addMovie")) {
-                url = "MovieController?action=addMovie";
+                url = ADDMOVIE_PAGE;
             }else if(action.equals("createpage")){
                url = VIEWCREATE_PAGE;
                 

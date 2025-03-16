@@ -36,7 +36,6 @@
                     <input type="number" id="releaseYear" name="releaseYear" min="1900" max="2100" required>
                 </div>
 
-                <!-- Chọn quốc gia từ danh sách -->
                 <div class="form-group">
                     <label for="country">Quốc Gia:</label>
                     <select id="country" name="country" required>
@@ -97,7 +96,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
 
         <script>
-            $(document).ready(function() {
+            $(document).ready(function () {
                 // Khởi tạo Select2 cho dropdown thể loại
                 $('#genre').select2({
                     placeholder: "Chọn thể loại",
