@@ -38,7 +38,7 @@
                                 <th>Tên phim</th>                        
                                 <th>Năm phát hành</th>
                                 <th>Quốc gia</th>
-                                
+                                <th>Thể loại</th> 
                                 <th>Người thêm</th>                              
                                 <th>Quản lý</th>
                             </tr>
@@ -50,11 +50,11 @@
                                     <td>${movie.title}</td>
                                     <td>${movie.releaseYear}</td> 
                                     <td>${movie.countryName}</td>
-                                    
+                                    <td>${movie.genres}</td> 
                                     <td>${movie.userName}</td>                                  
                                     <td>
                                         <a href="editMovie.jsp?id=${movie.movieID}" class="edit-btn">Sửa</a>
-                                        <a href="deleteMovie.jsp?id=${movie.movieID}" class="delete-btn" 
+                                        <a href="MainController?action=deleteMovie&id=${movie.movieID}" class="delete-btn" 
                                            onclick="return confirm('Bạn có chắc chắn muốn xóa không?');">Xóa</a>
                                     </td>
 

@@ -28,6 +28,10 @@
         <servlet-name>CreatePageController</servlet-name>
         <servlet-class>controller.CreatePageController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DeleteMovieController</servlet-name>
+        <servlet-class>controller.DeleteMovieController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
         <url-pattern>/LoginController</url-pattern>
@@ -73,10 +77,13 @@
         <servlet-name>CreatePageController</servlet-name>
         <url-pattern>/CreatePageController</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteMovieController</servlet-name>
+        <url-pattern>/DeleteMovieController</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
-    
 </web-app>

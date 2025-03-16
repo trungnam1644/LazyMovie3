@@ -24,6 +24,7 @@ public class MainController extends HttpServlet {
     private static final String SETTYPE_CONTROLLER = "SetTypeController";
     private static final String ADDMOVIE_PAGE = "MovieController";
     private static final String VIEWCREATE_PAGE = "CreatePageController";
+     private static final String DELETEMOVIE_PAGE = "DeleteMovieController";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -46,10 +47,9 @@ public class MainController extends HttpServlet {
             } else if (action.equals("addMovie")) {
                 url = ADDMOVIE_PAGE;
             }else if(action.equals("createpage")){
-               url = VIEWCREATE_PAGE;
-                
-                
-                
+               url = VIEWCREATE_PAGE;   
+            }else if (action.equals("deleteMovie")){
+                url = DELETEMOVIE_PAGE;
             }
             
             else if (action.equals("viewMovie")) {

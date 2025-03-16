@@ -129,6 +129,29 @@ public class MovieDAO {
     }
     return -1; 
 }
+  
+  
+  public boolean deleteMovie(int movieID) {
+    String sql = "DELETE FROM MovieGenre WHERE MovieID = ?"; // Xóa thể loại liên quan đến phim trước
+    String sql2 = "DELETE FROM Movie WHERE MovieID = ?"; // Xóa phim khỏi bảng Movie
+
+    try (Connection conn = DBUtils.getConnection()) {
+        // Xóa các thể loại liên quan đến phim
+        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, movieID);
+            stmt.executeUpdate();
+        }
+
+        // Xóa phim khỏi bảng Movie
+        try (PreparedStatement stmt = conn.prepareStatement(sql2)) {
+            stmt.setInt(1, movieID);
+            return stmt.executeUpdate() > 0;
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+    return false;
+}
 
   public static void main(String[] args) {
     // Tạo đối tượng MovieDTO
