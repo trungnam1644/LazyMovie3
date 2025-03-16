@@ -32,6 +32,14 @@
         <servlet-name>DeleteMovieController</servlet-name>
         <servlet-class>controller.DeleteMovieController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EditMovieController</servlet-name>
+        <servlet-class>controller.EditMovieController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>excuteEditController</servlet-name>
+        <servlet-class>controller.excuteEditController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
         <url-pattern>/LoginController</url-pattern>
@@ -80,6 +88,14 @@
     <servlet-mapping>
         <servlet-name>DeleteMovieController</servlet-name>
         <url-pattern>/DeleteMovieController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditMovieController</servlet-name>
+        <url-pattern>/EditMovieController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>excuteEditController</servlet-name>
+        <url-pattern>/excuteEditController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -53,7 +53,7 @@
                                     <td>${movie.genres}</td> 
                                     <td>${movie.userName}</td>                                  
                                     <td>
-                                        <a href="editMovie.jsp?id=${movie.movieID}" class="edit-btn">Sửa</a>
+                                        <a href="EditMovieController?movieID=${movie.movieID}" class="edit-btn">Sửa</a>
                                         <a href="MainController?action=deleteMovie&id=${movie.movieID}" class="delete-btn" 
                                            onclick="return confirm('Bạn có chắc chắn muốn xóa không?');">Xóa</a>
                                     </td>

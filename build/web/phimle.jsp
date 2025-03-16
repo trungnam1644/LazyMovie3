@@ -114,32 +114,7 @@
                                 <img class="movie-list-item-img" src="img/1.jpg" alt="">
                                 <span class="movie-list-item-title">Her</span>
                                 <button class="movie-list-item-button">Watch</button>
-                            </div>
-                            <div class="movie-list-item">
-                                <img class="movie-list-item-img" src="img/1.jpg" alt="">
-                                <span class="movie-list-item-title">Her</span>
-                                <button class="movie-list-item-button">Watch</button>
-                            </div>
-                            <div class="movie-list-item">
-                                <img class="movie-list-item-img" src="img/1.jpg" alt="">
-                                <span class="movie-list-item-title">Her</span>
-                                <button class="movie-list-item-button">Watch</button>
-                            </div>
-                            <div class="movie-list-item">
-                                <img class="movie-list-item-img" src="img/1.jpg" alt="">
-                                <span class="movie-list-item-title">Her</span>
-                                <button class="movie-list-item-button">Watch</button>
-                            </div>
-                            <div class="movie-list-item">
-                                <img class="movie-list-item-img" src="img/1.jpg" alt="">
-                                <span class="movie-list-item-title">Her</span>
-                                <button class="movie-list-item-button">Watch</button>
-                            </div>
-                            <div class="movie-list-item">
-                                <img class="movie-list-item-img" src="img/1.jpg" alt="">
-                                <span class="movie-list-item-title">Her</span>
-                                <button class="movie-list-item-button">Watch</button>
-                            </div>
+                            </div>                           
                         </div>
                     </div>
                 </div>

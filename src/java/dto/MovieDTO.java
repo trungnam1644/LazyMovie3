@@ -57,6 +57,8 @@ public class MovieDTO {
 
    
 
+   
+
     
     
     
@@ -84,12 +86,12 @@ public class MovieDTO {
         this.countryID = countryID;
     }
 
-    public MovieDTO(int movieID, String title, String description, int releaseYear, String countryName, double rating, String videoURL, String trailerURL, String thumbnailURL, String userName) {
-       
+    public MovieDTO(int movieID, String title, String description, int releaseYear, int countryID, double rating, String videoURL, String trailerURL, String thumbnailURL, String userName) {
+        this.movieID = movieID;
         this.title = title;
         this.description = description;
         this.releaseYear = releaseYear;
-        this.countryName = countryName;
+        this.countryID = countryID;
         this.rating = rating;
         this.videoURL = videoURL;
         this.trailerURL = trailerURL;

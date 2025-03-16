@@ -46,7 +46,7 @@ public class CreatePageController extends HttpServlet {
             request.setAttribute("countries", countries);
             request.setAttribute("genres", genres);
             request.getRequestDispatcher("addMovie.jsp").forward(request, response);
-            
+             
          
         } catch (Exception e) {
             e.printStackTrace();                    

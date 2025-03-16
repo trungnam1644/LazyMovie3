@@ -76,10 +76,8 @@ public class UserDAO {
     String sql = "UPDATE [User] SET TypeID = ? WHERE UserID = ?";
     try (Connection conn = DBUtils.getConnection();
          PreparedStatement ps = conn.prepareStatement(sql)) {
-
         ps.setInt(1, typeID);
         ps.setInt(2, userID);
-
         int rowsUpdated = ps.executeUpdate();
         return rowsUpdated > 0; // Nếu có ít nhất 1 hàng được cập nhật, trả về true
     } catch (SQLException ex) {
@@ -88,5 +86,5 @@ public class UserDAO {
     }
     return false;
 }
-//
+
 }

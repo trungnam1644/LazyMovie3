@@ -9,6 +9,7 @@ import dto.GenreDTO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import web.utils.DBUtils;
@@ -39,6 +40,7 @@ public class GenreDAO {
         return genreList;
     }
 
+     
     public static void main(String[] args) {
         GenreDAO genreDAO = new GenreDAO();
         List<GenreDTO> genreList = genreDAO.getAllGenres();
@@ -51,4 +53,24 @@ public class GenreDAO {
             System.out.println("Không có thể loại nào trong cơ sở dữ liệu.");
         }
     }
+
+    public List<Integer> getGenresByMovieID(int movieID) throws ClassNotFoundException {
+    List<Integer> genreIDs = new ArrayList<>();
+    String sql = "SELECT GenreID FROM MovieGenre WHERE MovieID = ?";
+
+    try (Connection conn = DBUtils.getConnection();
+         PreparedStatement ps = conn.prepareStatement(sql)) {
+
+        ps.setInt(1, movieID);
+        try (ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                genreIDs.add(rs.getInt("GenreID"));
+            }
+        }
+
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+    return genreIDs;
+}
 }

@@ -22,15 +22,17 @@ public class MainController extends HttpServlet {
     private static final String LOGOUT_CONTROLLER = "LogoutController";
     private static final String REGISTER_CONTROLLER = "RegisterController";
     private static final String SETTYPE_CONTROLLER = "SetTypeController";
-    private static final String ADDMOVIE_PAGE = "MovieController";
+    private static final String MOVIE_PAGE = "MovieController";
     private static final String VIEWCREATE_PAGE = "CreatePageController";
-     private static final String DELETEMOVIE_PAGE = "DeleteMovieController";
+    private static final String DELETEMOVIE_PAGE = "DeleteMovieController";
+    private static final String EDITMOVIE_PAGE = "excuteEditController";
+    
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String url = ERROR_PAGE;
-        
+
         String action = request.getParameter("action");
 
         try {
@@ -45,21 +47,19 @@ public class MainController extends HttpServlet {
             } else if (action.equals("SetType")) {
                 url = SETTYPE_CONTROLLER;
             } else if (action.equals("addMovie")) {
-                url = ADDMOVIE_PAGE;
-            }else if(action.equals("createpage")){
-               url = VIEWCREATE_PAGE;   
-            }else if (action.equals("deleteMovie")){
+                url = MOVIE_PAGE;
+            } else if (action.equals("createpage")) {
+                url = VIEWCREATE_PAGE;
+            } else if (action.equals("deleteMovie")) {
                 url = DELETEMOVIE_PAGE;
-            }
-            
-            else if (action.equals("viewMovie")) {
+            } else if (action.equals("excuteeditMovie")) {
+                url = EDITMOVIE_PAGE;           
+            } else if (action.equals("viewMovie")) {
                 MovieDAO movieDAO = new MovieDAO();
                 List<MovieDTO> movieList = movieDAO.getAllMovies();
-
                 request.setAttribute("movies", movieList);
                 request.getRequestDispatcher("admin1.jsp").forward(request, response);
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         }

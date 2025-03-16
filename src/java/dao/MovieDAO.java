@@ -9,7 +9,9 @@ import dto.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import web.utils.DBUtils;
 
@@ -132,8 +134,8 @@ public class MovieDAO {
   
   
   public boolean deleteMovie(int movieID) {
-    String sql = "DELETE FROM MovieGenre WHERE MovieID = ?"; // Xóa thể loại liên quan đến phim trước
-    String sql2 = "DELETE FROM Movie WHERE MovieID = ?"; // Xóa phim khỏi bảng Movie
+    String sql = "DELETE FROM MovieGenre WHERE MovieID = ?"; 
+    String sql2 = "DELETE FROM Movie WHERE MovieID = ?"; 
 
     try (Connection conn = DBUtils.getConnection()) {
         // Xóa các thể loại liên quan đến phim
@@ -152,47 +154,106 @@ public class MovieDAO {
     }
     return false;
 }
-
-  public static void main(String[] args) {
-    // Tạo đối tượng MovieDTO
-    MovieDTO movie = new MovieDTO();
-    movie.setTitle("Avengers: Endgame");
-    movie.setDescription("The Avengers assemble once more to reverse the damage caused by Thanos.");
-    movie.setReleaseYear(2019);
-    movie.setCountryID(1); // Ví dụ: quốc gia với ID = 1
-    movie.setRating(4.5);
-    movie.setVideoURL("https://www.youtube.com/watch?v=TcMBFSGVi1c");
-    movie.setTrailerURL("https://www.youtube.com/watch?v=TcMBFSGVi1c");
-    movie.setThumbnailURL("https://example.com/thumbnail.jpg");
-    movie.setUserName("admin1");
-
-    // Tạo đối tượng MovieDAO để gọi phương thức addMovie
-    MovieDAO movieDAO = new MovieDAO();
+ public boolean updateMovie(MovieDTO movie, List<Integer> genreIds) throws ClassNotFoundException {
+    boolean isUpdated = false;
+    Connection conn = null;
+    PreparedStatement pstmt = null;
     
-    // Gọi phương thức addMovie để thêm phim vào cơ sở dữ liệu
-    boolean isAdded = movieDAO.addMovie(movie);
-    
-    // Kiểm tra kết quả
-    if (isAdded) {
-        System.out.println("Movie added successfully!");
-        
-        // Sau khi thêm phim thành công, thêm thể loại cho phim
-        int movieID = movieDAO.getMovieIDByTitle("Avengers: Endgame"); // Lấy MovieID của phim vừa thêm
-        List<Integer> genreIDs = new ArrayList<>();
-        genreIDs.add(1); // Ví dụ: thể loại với ID = 1
-        genreIDs.add(2); // Ví dụ: thể loại với ID = 2
-        
-        boolean isGenresAdded = movieDAO.setGenresForMovie(movieID, genreIDs);
-        if (isGenresAdded) {
-            System.out.println("Genres added successfully!");
-        } else {
-            System.out.println("Failed to add genres.");
+    try {
+        conn = DBUtils.getConnection(); 
+        String sql = "UPDATE Movie SET title = ?, description = ?, releaseYear = ?, countryID = ?, rating = ?, videoUrl = ?, trailerUrl = ?, thumbnailUrl = ?, UserName = ? WHERE movieID = ?";
+        pstmt = conn.prepareStatement(sql);
+        pstmt.setString(1, movie.getTitle());
+        pstmt.setString(2, movie.getDescription());
+        pstmt.setInt(3, movie.getReleaseYear());
+        pstmt.setInt(4, movie.getCountryID());
+        pstmt.setDouble(5, movie.getRating());
+        pstmt.setString(6, movie.getVideoURL());
+        pstmt.setString(7, movie.getTrailerURL());
+        pstmt.setString(8, movie.getThumbnailURL());
+        pstmt.setString(9, movie.getUserName());
+        pstmt.setInt(10, movie.getMovieID());
+
+        int rowsAffected = pstmt.executeUpdate();           
+        if (rowsAffected > 0) {
+            isUpdated = true;
         }
-    } else {
-        System.out.println("Failed to add movie.");
-    }
+
+        // Xóa thể loại cũ và thêm thể loại mới
+        if (isUpdated) {
+            String deleteGenresSQL = "DELETE FROM MovieGenre WHERE movieID = ?";
+            try (PreparedStatement deleteStmt = conn.prepareStatement(deleteGenresSQL)) {
+                deleteStmt.setInt(1, movie.getMovieID());
+                deleteStmt.executeUpdate();
+            }
+
+            String insertGenreSQL = "INSERT INTO MovieGenre (movieID, genreID) VALUES (?, ?)";
+            try (PreparedStatement insertStmt = conn.prepareStatement(insertGenreSQL)) {
+                for (int genreId : genreIds) {
+                    insertStmt.setInt(1, movie.getMovieID());
+                    insertStmt.setInt(2, genreId);
+                    insertStmt.executeUpdate();
+                }
+            }
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+    } 
+    return isUpdated;
 }
 
+
+
+    public MovieDTO getMovieByID(int movieID) {
+     String sql = "SELECT MovieID, Title, Description, ReleaseYear, CountryID, Rating, VideoURL, TrailerURL, ThumbnailURL, UserName FROM Movie WHERE MovieID =  ?";
+    try (Connection conn = DBUtils.getConnection();
+         PreparedStatement stmt = conn.prepareStatement(sql)) {
+        stmt.setInt(1, movieID);
+        try (ResultSet rs = stmt.executeQuery()) {
+            if (rs.next()) {
+                return new MovieDTO(
+                    rs.getInt("MovieID"),
+                    rs.getString("Title"),
+                    rs.getString("Description"),
+                    rs.getInt("ReleaseYear"),
+                    rs.getInt("CountryID"),
+                    rs.getDouble("Rating"),
+                    rs.getString("VideoURL"),
+                    rs.getString("TrailerURL"),
+                    rs.getString("ThumbnailURL"),
+                    rs.getString("UserName")
+                );
+            }
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+    return null;
+    }
+    
+    public static void main(String[] args) {
+        MovieDAO movieDAO = new MovieDAO(); // Tạo instance của DAO
+        int testMovieID = 1; // Thay đổi ID này để kiểm tra với dữ liệu trong DB
+        
+        MovieDTO movie = movieDAO.getMovieByID(testMovieID);
+        
+        if (movie != null) {
+            System.out.println("Movie found:");
+            System.out.println("ID: " + movie.getMovieID());
+            System.out.println("Title: " + movie.getTitle());
+            System.out.println("Description: " + movie.getDescription());
+            System.out.println("Release Year: " + movie.getReleaseYear());
+            System.out.println("Country ID: " + movie.getCountryID());
+            System.out.println("Rating: " + movie.getRating());
+            System.out.println("Video URL: " + movie.getVideoURL());
+            System.out.println("Trailer URL: " + movie.getTrailerURL());
+            System.out.println("Thumbnail URL: " + movie.getThumbnailURL());
+            System.out.println("User Name: " + movie.getUserName());
+        } else {
+            System.out.println("No movie found with ID: " + testMovieID);
+        }
+    }
+    
 }
 
 
