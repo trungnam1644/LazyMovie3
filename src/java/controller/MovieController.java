@@ -1,7 +1,7 @@
 package controller;
 
-import Movie.MovieDAO;
-import Movie.MovieDTO;
+import dao.MovieDAO;
+import dto.MovieDTO;
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.ServletException;

@@ -5,9 +5,11 @@
  */
 package controller;
 
-import Country.CountryDAO;
-import Country.CountryDTO;
-import Movie.MovieDAO;
+import dao.CountryDAO;
+import dao.GenreDAO;
+import dto.CountryDTO;
+import dao.MovieDAO;
+import dto.GenreDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -38,9 +40,14 @@ public class CreatePageController extends HttpServlet {
         
         try {            
             CountryDAO dao = new CountryDAO();
+            GenreDAO dao1 = new GenreDAO();
+            List<GenreDTO> genres = dao1.getAllGenres();
             List<CountryDTO> countries = dao.getAllCountries();
             request.setAttribute("countries", countries);
+            request.setAttribute("genres", genres);
             request.getRequestDispatcher("addMovie.jsp").forward(request, response);
+            
+         
         } catch (Exception e) {
             e.printStackTrace();                    
         }

@@ -1,9 +1,9 @@
 package controller.authentication;
 
-import Country.CountryDAO;
-import Country.CountryDTO;
-import Movie.MovieDAO;
-import Movie.MovieDTO;
+import dao.CountryDAO;
+import dto.CountryDTO;
+import dao.MovieDAO;
+import dto.MovieDTO;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;

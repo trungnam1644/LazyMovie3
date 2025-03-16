@@ -6,6 +6,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Thêm Phim Mới</title>
         <link rel="stylesheet" href="css/register.css">
+        <!-- Thêm CSS cho Select2 -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
     </head>
     <body>
         <div class="logo-lazymoive">
@@ -46,6 +48,18 @@
                     </select>
                 </div>
 
+                <!-- Chọn thể loại từ danh sách -->
+                <div class="form-group">
+                    <label for="genre">Thể Loại:</label>
+                    <select id="genre" name="genre" multiple="multiple" required>
+                        <option value="">Chọn thể loại</option>
+                        <!-- Duyệt qua danh sách các thể loại -->
+                        <c:forEach var="genre" items="${genres}">
+                            <option value="${genre.genreID}">${genre.genreName}</option>
+                        </c:forEach>
+                    </select>
+                </div>
+
                 <div class="form-group">
                     <label for="rating">Đánh Giá:</label>
                     <input type="number" id="rating" name="rating" step="0.1" min="0" max="5" placeholder="Nhập điểm đánh giá (0-5)" required>
@@ -77,6 +91,21 @@
                 </div>
             </form>
         </div>
+
+        <!-- Thêm JavaScript cho Select2 -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+
+        <script>
+            $(document).ready(function() {
+                // Khởi tạo Select2 cho dropdown thể loại
+                $('#genre').select2({
+                    placeholder: "Chọn thể loại",
+                    allowClear: true,
+                    width: '100%',
+                });
+            });
+        </script>
     </body>
 </html>
 
