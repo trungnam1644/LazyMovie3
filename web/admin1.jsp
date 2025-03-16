@@ -14,6 +14,7 @@
         <link rel="stylesheet" href="css/admin.css">
     </head>
     <body>
+        
         <div class="admin-container">
             <nav class="sidebar">
                 <h2>ADMIN</h2>
@@ -38,7 +39,8 @@
                                 <th>Tên phim</th>                        
                                 <th>Năm phát hành</th>
                                 <th>Quốc gia</th>
-                                <th>Thể loại</th> 
+                                <th>Thể loại</th>
+                                <th>Ảnh</th>
                                 <th>Người thêm</th>                              
                                 <th>Quản lý</th>
                             </tr>
@@ -50,7 +52,9 @@
                                     <td>${movie.title}</td>
                                     <td>${movie.releaseYear}</td> 
                                     <td>${movie.countryName}</td>
-                                    <td>${movie.genres}</td> 
+                                    <td>${movie.genres}</td>
+                                    <td><img class="movie-list-item-img" src="${movie.thumbnailURL}" alt="${movie.title}" style="width: 100px; height: auto; border-radius: 5px;"></td>
+
                                     <td>${movie.userName}</td>                                  
                                     <td>
                                         <a href="EditMovieController?movieID=${movie.movieID}" class="edit-btn">Sửa</a>
