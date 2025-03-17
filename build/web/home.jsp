@@ -28,10 +28,9 @@
                 <ul class="menu-list">
                     <li class="menu-list-item"><a href="home.jsp">TRANG CHỦ</a>
                     </li>
-                    <li class="menu-list-item"><a href="phimbo.jsp">PHIM CHIẾU RẠP</a>
-                        
-                    </li>
-                    <li class="menu-list-item"><a href="phimle.jsp">PHIM LẺ</a></li>
+                    <li class="menu-list-item"><a href="MovieController?action=phimchieurap">PHIM CHIẾU RẠP</a></li>
+                    <li class="menu-list-item"><a href="MovieController?action=phimle">PHIM LẺ</a></li>
+
                     <li class="menu-list-item genre-dropdown">
                         <a href="#">THỂ LOẠI</a>
                         <ul class="submenu">
@@ -50,17 +49,22 @@
                     </li>
                 </ul>
                 <div class="search-cart-container">
-                    <div class="search-container">
-                        <input type="text" class="search-input" placeholder="Tìm kiếm...">
-                        <i class="search-icon fas fa-search"></i>
-                    </div>
-                    <i class="cart-icon fas fa-shopping-cart"></i>
+                    <form action="MainController" method="get" class="search-container">
+                        <input type="text" name="keyword" class="search-input" placeholder="Tìm kiếm...">
+                        <input type="hidden" name="action" value="search">
+                        <button type="submit" class="search-icon"><i class="fas fa-search"></i></button>
+                    </form>
+                    <a href="cart.jsp" class="cart-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </a>
                 </div>
+
                 <div class="profile-dropdown">
-                    <a href="#" class="profile-container">
-                        <img class="profile-picture" src="img/profile.jpg" alt="">
+                    <a href="#" class="profile-container">                      
                         <div class="profile-text-container">
-                            <span class="profile-text">Profile</span>
+                            <span class="profile-text">
+                                ${User.fullName} <!-- Hiển thị tên người dùng -->
+                            </span>
                         </div>
                     </a>
                     <ul class="dropdown-menu">
@@ -68,10 +72,11 @@
                             <c:if test="${User.role == 'Admin'}">
                             <li><a href="admin1.jsp">Quản lý Admin</a></li>
                             </c:if>
-
-                        <li><a href="MainController?action=logout" >Đăng xuất</a></li>
+                        <li><a href="MainController?action=logout">Đăng xuất</a></li>
                     </ul>
-                </div>          
+                </div>
+
+
             </div>
         </div>
         <div class="container">
@@ -92,7 +97,7 @@
                             câu chuyện theo chân chàng dân quân Văn Dân và chuyện tình với nàng tiểu thư đam mê dương cầm Thục Hương. 
                             Khi những người khác đã di tản lên chiến khu, họ quyết định cố thủ lại mảnh đất thủ đô đã tan hoang vì bom đạn, mặc cho những hiểm nguy đang chờ đợi trước mắt.
                         </p>
-                        <button class="watch-button">Watch</button>
+                        <a href="MainController?action=viewMovieVideo&movieID=3" class="watch-button">Watch</a>
                     </div>
                 </div>
                 <div class="movie-list-container">

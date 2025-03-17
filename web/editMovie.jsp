@@ -21,9 +21,9 @@
                 <input type="hidden" name="action" value="excuteeditMovie">
                 <input type="hidden" name="movieID" value="${movie.movieID}">
                 <div class="form-group">
-    <label for="movieID">ID Phim:</label>
-    <input type="text" id="movieID" name="movieID" value="${movie.movieID}" readonly>
-</div>
+                    <label for="movieID">ID Phim:</label>
+                    <input type="text" id="movieID" name="movieID" value="${movie.movieID}" readonly>
+                </div>
 
                 <div class="form-group">
                     <label for="title">Tên Phim:</label>
@@ -61,7 +61,16 @@
                         </c:forEach>
                     </select>
                 </div>
-
+                <div class="form-group">
+                    <label for="movieType">Loại Phim:</label>
+                    <select id="movieType" name="movieTypeID" required>
+                        <c:forEach var="type" items="${movieTypes}">
+                            <option value="${type.movieTypeID}" ${movie.movieTypeID == type.movieTypeID ? 'selected="selected"' : ''}>
+                                ${type.movieTypeName}
+                            </option>
+                        </c:forEach>
+                    </select>
+                </div>
                 <div class="form-group">
                     <label for="rating">Đánh Giá:</label>
                     <input type="number" id="rating" name="rating" step="0.1" min="0" max="5" value="${movie.rating}" required>
@@ -72,10 +81,6 @@
                     <input type="url" id="videoUrl" name="videoURL" value="${movie.videoURL}" required>
                 </div>
 
-                <div class="form-group">
-                    <label for="trailerUrl">URL Trailer:</label>
-                    <input type="url" id="trailerUrl" name="trailerURL" value="${movie.trailerURL}" required>
-                </div>
 
                 <div class="form-group">
                     <label for="thumbnailUrl">URL Ảnh:</label>

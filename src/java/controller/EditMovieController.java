@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controller;
 
 import dao.CountryDAO;
@@ -11,8 +6,8 @@ import dao.MovieDAO;
 import dto.CountryDTO;
 import dto.GenreDTO;
 import dto.MovieDTO;
+import dto.MovieTypeDTO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -20,98 +15,67 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- *
- * @author trung
+ * Servlet cho trang chỉnh sửa phim
  */
 public class EditMovieController extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
-    response.setContentType("text/html;charset=UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
 
-    try {
-       
-        int movieID = Integer.parseInt(request.getParameter("movieID"));
-        
-        MovieDAO movieDAO = new MovieDAO();
-        CountryDAO countryDAO = new CountryDAO();
-        GenreDAO genreDAO = new GenreDAO();
+        try {
+            // Lấy movieID từ request
+            String movieIDParam = request.getParameter("movieID");
+            if (movieIDParam == null || movieIDParam.isEmpty()) {
+                response.sendRedirect("admin1.jsp?error=InvalidMovieID");
+                return;
+            }
 
-        MovieDTO movie = movieDAO.getMovieByID(movieID);
-        List<CountryDTO> countries = countryDAO.getAllCountries();
-        List<GenreDTO> genres = genreDAO.getAllGenres();
-        List<Integer> movieGenreIDs = genreDAO.getGenresByMovieID(movieID); 
+            int movieID = Integer.parseInt(movieIDParam);
 
-        
-        if (movie == null) {
-            response.sendRedirect("admin1.jsp?error=MovieNotFound");
-            return;
+            // Khởi tạo DAO để lấy dữ liệu
+            MovieDAO movieDAO = new MovieDAO();
+            CountryDAO countryDAO = new CountryDAO();
+            GenreDAO genreDAO = new GenreDAO();
+            MovieDAO movieTypeDAO = new MovieDAO();
+
+            // Lấy thông tin phim
+            MovieDTO movie = movieDAO.getMovieByID(movieID);
+            if (movie == null) {
+                response.sendRedirect("admin1.jsp?error=MovieNotFound");
+                return;
+            }
+
+            // Lấy danh sách quốc gia, thể loại và loại phim
+            List<CountryDTO> countries = countryDAO.getAllCountries();
+            List<GenreDTO> genres = genreDAO.getAllGenres();
+            List<Integer> movieGenreIDs = genreDAO.getGenresByMovieID(movieID);
+            List<MovieTypeDTO> movieTypes = movieTypeDAO.getAllMovieTypes();
+
+            // Gửi dữ liệu đến editMovie.jsp
+            request.setAttribute("movie", movie);
+            request.setAttribute("countries", countries);
+            request.setAttribute("genres", genres);
+            request.setAttribute("movieGenreIDs", movieGenreIDs);
+            request.setAttribute("movieTypes", movieTypes);
+
+            request.getRequestDispatcher("editMovie.jsp").forward(request, response);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            response.sendRedirect("admin1.jsp?error=InternalError");
         }
-
-        request.setAttribute("movie", movie);
-        request.setAttribute("countries", countries);
-        request.setAttribute("genres", genres);
-        request.setAttribute("movieGenreIDs", movieGenreIDs);
-
-        
-
-        request.getRequestDispatcher("editMovie.jsp").forward(request, response);
-
-    } catch (Exception e) {
-        e.printStackTrace();
-        response.sendRedirect("admin1.jsp?error=InternalError");
     }
-}
 
-
-    
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+        throws ServletException, IOException {
         processRequest(request, response);
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+        throws ServletException, IOException {
         processRequest(request, response);
     }
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
-
 }
-

@@ -29,6 +29,7 @@ public class MainController extends HttpServlet {
     private static final String VIEWMOVIEVIDEO_PAGE = "ViewMovieVideoController";
     private static final String USER_PAGE = "UserController";
     private static final String DELETEUSER_PAGE = "DeleteUserController";
+    private static final String SEARCH_PAGE = "SearchController";
     
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -66,7 +67,7 @@ public class MainController extends HttpServlet {
                     MovieDAO movieDAO = new MovieDAO();
                     List<MovieDTO> movieList = movieDAO.getAllMovies();
                     request.setAttribute("movies", movieList);
-                    url = "home.jsp"; // Đảm bảo chuyển hướng đúng
+                    url = "home.jsp"; 
                 
 
             } else if (action.equals("viewMovieVideo")){
@@ -75,8 +76,11 @@ public class MainController extends HttpServlet {
                 url = USER_PAGE;
             }else if(action.equals("deleteUser")){
                 url =DELETEUSER_PAGE;
+            }else if (action.equals("search")){
+                 url = SEARCH_PAGE;
             }
             
+           
         } catch (Exception e) {
             e.printStackTrace();
         }

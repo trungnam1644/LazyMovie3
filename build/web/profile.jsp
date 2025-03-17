@@ -15,8 +15,7 @@
 
             <!-- Sidebar -->
             <div class="sidebar">
-                <div class="sidebar-profile">
-                    <img src="img/profile.jpg" alt="Avatar" class="sidebar-avatar">
+                <div class="sidebar-profile">                   
                     <h2>${User.fullName}</h2>
                 </div>
                 <ul>

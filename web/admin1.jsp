@@ -40,6 +40,7 @@
                                 <th>Năm phát hành</th>
                                 <th>Quốc gia</th>
                                 <th>Thể loại</th>
+                                <th>Loại phim</th>
                                 <th>Ảnh</th>
                                 <th>Người thêm</th>                              
                                 <th>Quản lý</th>
@@ -53,6 +54,7 @@
                                     <td>${movie.releaseYear}</td> 
                                     <td>${movie.countryName}</td>
                                     <td>${movie.genres}</td>
+                                    <td>${movie.movieTypeName}</td>
                                     <td><img class="movie-list-item-img" src="${movie.thumbnailURL}" alt="${movie.title}" style="width: 100px; height: auto; border-radius: 5px;"></td>
 
                                     <td>${movie.userName}</td>                                  

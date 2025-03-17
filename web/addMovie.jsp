@@ -58,6 +58,16 @@
                         </c:forEach>
                     </select>
                 </div>
+                <div class="form-group">
+                    <label for="movieType">Loại Phim:</label>
+                    <select id="movieType" name="movieType" required>
+                        <option value="">Chọn loại phim</option>
+                        <c:forEach var="movieType" items="${movieTypes}">
+                            <option value="${movieType.movieTypeID}">${movieType.movieTypeName}</option>
+                        </c:forEach>
+                    </select>
+                </div>
+
 
                 <div class="form-group">
                     <label for="rating">Đánh Giá:</label>
@@ -67,12 +77,7 @@
                 <div class="form-group">
                     <label for="videoUrl">URL Video:</label>
                     <input type="url" id="videoUrl" name="videoUrl" placeholder="Nhập URL video" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="trailerUrl">URL Trailer:</label>
-                    <input type="url" id="trailerUrl" name="trailerUrl" placeholder="Nhập URL trailer" required>
-                </div>
+                </div>                
 
                 <div class="form-group">
                     <label for="thumbnailUrl">URL Ảnh:</label>

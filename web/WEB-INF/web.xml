@@ -52,6 +52,10 @@
         <servlet-name>DeleteUserController</servlet-name>
         <servlet-class>controller.DeleteUserController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SearchController</servlet-name>
+        <servlet-class>controller.SearchController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
         <url-pattern>/LoginController</url-pattern>
@@ -120,6 +124,10 @@
     <servlet-mapping>
         <servlet-name>DeleteUserController</servlet-name>
         <url-pattern>/DeleteUserController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SearchController</servlet-name>
+        <url-pattern>/SearchController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

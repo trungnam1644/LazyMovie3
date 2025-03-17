@@ -21,7 +21,7 @@
                 </div>
                 <ul class="menu-list">
                     <li class="menu-list-item"><a href="home.jsp">TRANG CHỦ</a></li>
-                    <li class="menu-list-item"><a href="phimbo.jsp">PHIM CHIẾU RẠP</a></li>
+                    <li class="menu-list-item"><a href="phimchieurap.jsp">PHIM CHIẾU RẠP</a></li>
                     <li class="menu-list-item"><a href="phimle.jsp">PHIM LẺ</a></li>
                     <li class="menu-list-item genre-dropdown">
                         <a href="#">THỂ LOẠI</a>

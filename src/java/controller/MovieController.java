@@ -18,7 +18,6 @@ public class MovieController extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
 
-    // DAO instances for movie and genre
     private MovieDAO movieDAO = new MovieDAO();
     private GenreDAO genreDAO = new GenreDAO();
 
@@ -26,80 +25,107 @@ public class MovieController extends HttpServlet {
         String action = request.getParameter("action");
 
         if ("addMovie".equals(action)) {
-            String title = request.getParameter("title");
-            String description = request.getParameter("description");
-            int releaseYear = Integer.parseInt(request.getParameter("releaseYear"));
-            List<Integer> genreIds = request.getParameterValues("genre") != null
-                    ? Arrays.stream(request.getParameterValues("genre"))
-                            .map(Integer::parseInt)
-                            .collect(Collectors.toList())
-                    : new ArrayList<>();
-            double rating = Double.parseDouble(request.getParameter("rating"));
-            String videoUrl = request.getParameter("videoUrl");
-            String trailerUrl = request.getParameter("trailerUrl");
-            String thumbnailUrl = request.getParameter("thumbnailUrl");
-            int countryID = Integer.parseInt(request.getParameter("country"));
-            HttpSession session = request.getSession(true);
-            UserDTO user = (UserDTO) session.getAttribute("User");
-            String userName = user.getUserName();
-            MovieDTO newMovie = new MovieDTO(title, description, releaseYear, countryID, rating, videoUrl, trailerUrl, thumbnailUrl, userName);
-            boolean isMovieAdded = movieDAO.addMovie(newMovie);
-            if (isMovieAdded) {
-                int movieID = movieDAO.getMovieIDByTitle(newMovie.getTitle());
-                movieDAO.setGenresForMovie(movieID, genreIds);
-                request.getRequestDispatcher("admin1.jsp").forward(request, response);
-            } else {
-                response.getWriter().write("Failed to add movie.");
-            }
-        } else if(action.equals("editMovie")){
             try {
-        int movieID = Integer.parseInt(request.getParameter("movieID")); // Lấy movieID từ form
-        String title = request.getParameter("title");
-        String description = request.getParameter("description");
-        int releaseYear = Integer.parseInt(request.getParameter("releaseYear"));
-        List<Integer> genreIds = request.getParameterValues("genre") != null
-                ? Arrays.stream(request.getParameterValues("genre"))
-                        .map(Integer::parseInt)
-                        .collect(Collectors.toList())
-                : new ArrayList<>();
-        double rating = Double.parseDouble(request.getParameter("rating"));
-        String videoUrl = request.getParameter("videoUrl");
-        String trailerUrl = request.getParameter("trailerUrl");
-        String thumbnailUrl = request.getParameter("thumbnailUrl");
-        int countryID = Integer.parseInt(request.getParameter("country"));
+                String title = request.getParameter("title");
+                String description = request.getParameter("description");
+                int releaseYear = Integer.parseInt(request.getParameter("releaseYear"));
+                int movieTypeID = Integer.parseInt(request.getParameter("movieType"));
+                int countryID = Integer.parseInt(request.getParameter("country"));
+                double rating = Double.parseDouble(request.getParameter("rating"));
+                String videoUrl = request.getParameter("videoUrl");
+                String thumbnailUrl = request.getParameter("thumbnailUrl");
 
-        HttpSession session = request.getSession(true);
-        UserDTO user = (UserDTO) session.getAttribute("User");
-        String userName = user.getUserName();
-        System.out.println("Movie ID: " + movieID);
-System.out.println("Title: " + title);
-System.out.println("Description: " + description);
-System.out.println("Release Year: " + releaseYear);
-System.out.println("Country ID: " + countryID);
-System.out.println("Rating: " + rating);
-System.out.println("Video URL: " + videoUrl);
-System.out.println("Trailer URL: " + trailerUrl);
-System.out.println("Thumbnail URL: " + thumbnailUrl);
-System.out.println("Created By: " + userName);
-System.out.println("Genres: " + genreIds);
+                // Lấy user từ session
+                HttpSession session = request.getSession(true);
+                UserDTO user = (UserDTO) session.getAttribute("User");
+                String userName = user.getUserName();
 
+                // Lấy danh sách Genre từ form
+                List<Integer> genreIds = request.getParameterValues("genre") != null
+                        ? Arrays.stream(request.getParameterValues("genre"))
+                                .map(Integer::parseInt)
+                                .collect(Collectors.toList())
+                        : new ArrayList<>();
 
-        MovieDTO updatedMovie = new MovieDTO(movieID, title, description, releaseYear, countryID, rating, videoUrl, trailerUrl, thumbnailUrl, userName);
-        
-        boolean isUpdated = movieDAO.updateMovie(updatedMovie, genreIds);
-        if (isUpdated) {
-            request.getRequestDispatcher("admin1.jsp").forward(request, response);
-        } else {
-            response.getWriter().write("Failed to update movie.");
+                // Tạo đối tượng MovieDTO
+                MovieDTO newMovie = new MovieDTO(title, description, releaseYear, movieTypeID, countryID, rating, videoUrl, thumbnailUrl, userName);
+                
+                // Thêm phim vào database
+                int movieID = movieDAO.addMovie(newMovie);
+                
+                if (movieID > 0) {
+                    // Thêm thể loại cho phim
+                    boolean genresAdded = movieDAO.setGenresForMovie(movieID, genreIds);
+                    if (genresAdded) {
+                        response.sendRedirect("admin1.jsp");
+                    } else {
+                        response.getWriter().write("Error: Could not add genres.");
+                    }
+                } else {
+                    response.getWriter().write("Error: Could not add movie.");
+                }
+                
+            } catch (Exception e) {
+                e.printStackTrace();
+                response.getWriter().write("Error: Something went wrong.");
+            }
+
+        } else if ("editMovie".equals(action)) {
+            try {
+                int movieID = Integer.parseInt(request.getParameter("movieID"));
+                String title = request.getParameter("title");
+                String description = request.getParameter("description");
+                int releaseYear = Integer.parseInt(request.getParameter("releaseYear"));
+                int movieTypeID = Integer.parseInt(request.getParameter("movieType"));
+                int countryID = Integer.parseInt(request.getParameter("country"));
+                double rating = Double.parseDouble(request.getParameter("rating"));
+                String videoUrl = request.getParameter("videoUrl");
+                String thumbnailUrl = request.getParameter("thumbnailUrl");
+                List<Integer> genreIds = request.getParameterValues("genre") != null
+                        ? Arrays.stream(request.getParameterValues("genre"))
+                                .map(Integer::parseInt)
+                                .collect(Collectors.toList())
+                        : new ArrayList<>();
+
+                HttpSession session = request.getSession(true);
+                UserDTO user = (UserDTO) session.getAttribute("User");
+                String userName = user.getUserName();
+
+                MovieDTO updatedMovie = new MovieDTO(movieID, title, description, releaseYear, movieTypeID, countryID, rating, videoUrl, thumbnailUrl, userName);
+                boolean isUpdated = movieDAO.updateMovie(updatedMovie, genreIds);
+
+                if (isUpdated) {
+                    request.getRequestDispatcher("admin1.jsp").forward(request, response);
+                } else {
+                    response.getWriter().write("Failed to update movie.");
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                response.getWriter().write("Error: Something went wrong.");
+            }
         }
-    } catch (ClassNotFoundException e) {
-        e.printStackTrace();
-        response.getWriter().write("Error: Database driver not found.");
-    } catch (Exception e) {
-        e.printStackTrace();
-        response.getWriter().write("Error: Something went wrong.");
+    }
+
+protected void doGet(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+    String action = request.getParameter("action");
+
+    if ("phimchieurap".equals(action)) {
+        try {
+            List<MovieDTO> phimChieuRapList = movieDAO.getMoviesForType("Phim Chiếu Rạp");
+            request.setAttribute("phimchieurapList", phimChieuRapList);
+            request.getRequestDispatcher("phimchieurap.jsp").forward(request, response);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    } else if ("phimle".equals(action)) {
+        try {
+            List<MovieDTO> phimLeList = movieDAO.getMoviesForType("Phim Lẻ");
+            request.setAttribute("phimleList", phimLeList);
+            request.getRequestDispatcher("phimle.jsp").forward(request, response);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 }
-    }
-    
 }

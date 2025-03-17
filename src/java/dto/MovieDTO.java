@@ -12,6 +12,7 @@ import java.util.List;
  * @author trung
  */
 public class MovieDTO {
+
     private int movieID;
     private String title;
     private String description;
@@ -19,57 +20,139 @@ public class MovieDTO {
     private String countryName;
     private double rating;
     private String videoURL;
-    private String trailerURL;
     private String thumbnailURL;
     private String userName;
     private String actors;
     private int countryID;
     private String genres;
+    private int movieTypeID;
+    private String movieTypeName;
 
-    public MovieDTO(String title, String description, int releaseYear, int countryID, double rating, String videoURL, String trailerURL, String thumbnailURL, String userName) {
-   this.title = title;
-   this.description = description;
-   this.releaseYear = releaseYear;
-   this.countryID = countryID;
-   this.rating = rating;
-   this.videoURL = videoURL;
-        this.trailerURL = trailerURL;
-        this.thumbnailURL = thumbnailURL;
-         this.userName = userName;
-   
+    public MovieDTO(int movieID, String title, String description, int releaseYear, int movieTypeID, int countryID, double rating, String videoUrl, String thumbnailUrl, String userName) {
+        this.movieID = movieID;
+        this.title = title;
+        this.description = description;
+        this.releaseYear = releaseYear;
+        this.movieTypeID = movieTypeID;
+        this.countryID = countryID;
+        this.rating = rating;
+        this.videoURL = videoUrl;
+        this.thumbnailURL = thumbnailUrl;
+        this.userName = userName;
+
     }
 
-    public MovieDTO() {
-     }
+    public MovieDTO(String title, String description, int releaseYear, int movieTypeID, int countryID, double rating, String videoUrl, String thumbnailUrl, String userName) {
+        this.title = title;
+        this.description = description;
+        this.releaseYear = releaseYear;
+        this.movieTypeID = movieTypeID;
+        this.countryID = countryID;
+        this.rating = rating;
+        this.videoURL = videoUrl;
+        this.thumbnailURL = thumbnailUrl;
+        this.userName = userName;
+    }
+
+    public MovieDTO(int movieID, String title, String description, int releaseYear, int movieTypeID, String movieTypeName, int countryID , String countryName, double rating, String videoURL, String thumbnailURL, String userName, String genres) {
+        this.movieID = movieID;
+        this.title = title;
+        this.description = description;
+        this.releaseYear = releaseYear;
+        this.countryName = countryName;
+        this.rating = rating;
+        this.videoURL = videoURL;
+        this.thumbnailURL = thumbnailURL;
+        this.userName = userName;
+        this.countryID = countryID;
+        this.genres = genres;
+        this.movieTypeID = movieTypeID;
+        this.movieTypeName = movieTypeName;
+    }
+
+    public MovieDTO(int movieID, String title, String description, String thumbnailURL , int releaseYear, double rating) {
+        this.movieID = movieID;
+        this.title = title;
+        this.description = description;
+        this.releaseYear = releaseYear;
+        this.rating = rating;
+        this.thumbnailURL = thumbnailURL;
+    }
+
+    public MovieDTO(int movieID, String title, String description, String thumbnailURL , int releaseYear, double rating, String movieTypeName) {
+        this.movieID = movieID;
+        this.title = title;
+        this.description = description;
+        this.releaseYear = releaseYear;
+        this.rating = rating;
+        this.thumbnailURL = thumbnailURL;
+        this.movieTypeName = movieTypeName;
+    }
+
+    public MovieDTO(int movieID, String title, String thumbnailURL, double rating) {
+    this.movieID = movieID;
+    this.title = title;
+    this.thumbnailURL = thumbnailURL;
+    this.rating = rating;
+    }
 
     
 
-    public MovieDTO(String title, String description, int releaseYear , double rating, String videoURL, String trailerURL, String thumbnailURL, String userName) {
+    
+
+    
+
+    
+    
+    
+
+    public int getMovieTypeID() {
+        return movieTypeID;
+    }
+
+    public void setMovieTypeID(int movieTypeID) {
+        this.movieTypeID = movieTypeID;
+    }
+
+    public String getMovieTypeName() {
+        return movieTypeName;
+    }
+
+    public void setMovieTypeName(String movieTypeName) {
+        this.movieTypeName = movieTypeName;
+    }
+
+    public MovieDTO(String title, String description, int releaseYear, int countryID, double rating, String videoURL, String thumbnailURL, String userName) {
+        this.title = title;
+        this.description = description;
+        this.releaseYear = releaseYear;
+        this.countryID = countryID;
+        this.rating = rating;
+        this.videoURL = videoURL;
+        this.thumbnailURL = thumbnailURL;
+        this.userName = userName;
+
+    }
+
+    public MovieDTO() {
+    }
+
+    public MovieDTO(String title, String description, int releaseYear, double rating, String videoURL, String thumbnailURL, String userName) {
         this.title = title;
         this.description = description;
         this.releaseYear = releaseYear;
         this.rating = rating;
         this.videoURL = videoURL;
-        this.trailerURL = trailerURL;
         this.thumbnailURL = thumbnailURL;
         this.userName = userName;
     }
 
-   
+    public MovieDTO(int movieID, String title, String description, int releaseYear, int countryID, double rating, String videoUrl, String thumbnailUrl, String userName) {
+    }
 
-   
+    public MovieDTO(int aInt, String string, String string0, int aInt0, String string1, String string2, String string3, String string4) {
+    }
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     public String getGenres() {
         return genres;
     }
@@ -86,30 +169,16 @@ public class MovieDTO {
         this.countryID = countryID;
     }
 
-    public MovieDTO(int movieID, String title, String description, int releaseYear, int countryID, double rating, String videoURL, String trailerURL, String thumbnailURL, String userName) {
+    public MovieDTO(int movieID, String title, String description, int releaseYear, double rating, String videoURL, String thumbnailURL, String userName) {
         this.movieID = movieID;
         this.title = title;
         this.description = description;
         this.releaseYear = releaseYear;
-        this.countryID = countryID;
         this.rating = rating;
         this.videoURL = videoURL;
-        this.trailerURL = trailerURL;
         this.thumbnailURL = thumbnailURL;
         this.userName = userName;
     }
- public MovieDTO(int movieID, String title, String description, int releaseYear,  double rating, String videoURL, String trailerURL, String thumbnailURL, String userName) {
-        this.movieID = movieID;
-        this.title = title;
-        this.description = description;
-        this.releaseYear = releaseYear;      
-        this.rating = rating;
-        this.videoURL = videoURL;
-        this.trailerURL = trailerURL;
-        this.thumbnailURL = thumbnailURL;
-        this.userName = userName;
-    }
-    
 
     public int getMovieID() {
         return movieID;
@@ -167,14 +236,6 @@ public class MovieDTO {
         this.videoURL = videoURL;
     }
 
-    public String getTrailerURL() {
-        return trailerURL;
-    }
-
-    public void setTrailerURL(String trailerURL) {
-        this.trailerURL = trailerURL;
-    }
-
     public String getThumbnailURL() {
         return thumbnailURL;
     }
@@ -199,7 +260,4 @@ public class MovieDTO {
         this.actors = actors;
     }
 
-   
-    
 }
-
