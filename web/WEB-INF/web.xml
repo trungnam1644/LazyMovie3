@@ -44,6 +44,14 @@
         <servlet-name>ViewMovieVideoController</servlet-name>
         <servlet-class>controller.ViewMovieVideoController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UserController</servlet-name>
+        <servlet-class>controller.UserController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteUserController</servlet-name>
+        <servlet-class>controller.DeleteUserController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
         <url-pattern>/LoginController</url-pattern>
@@ -104,6 +112,14 @@
     <servlet-mapping>
         <servlet-name>ViewMovieVideoController</servlet-name>
         <url-pattern>/ViewMovieVideoController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserController</servlet-name>
+        <url-pattern>/UserController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteUserController</servlet-name>
+        <url-pattern>/DeleteUserController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

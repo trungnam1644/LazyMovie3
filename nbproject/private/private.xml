@@ -3,20 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/LazyMovie/src/java/controller/DeleteMovieController.java</file>
-            <file>file:/D:/LazyMovie/src/java/controller/EditMovieController.java</file>
             <file>file:/D:/LazyMovie/web/editMovie.jsp</file>
-            <file>file:/D:/LazyMovie/web/admin2.jsp</file>
-            <file>file:/D:/LazyMovie/src/java/dao/MovieDAO.java</file>
-            <file>file:/D:/LazyMovie/web/home.jsp</file>
-            <file>file:/D:/LazyMovie/web/homeview.jsp</file>
-            <file>file:/D:/LazyMovie/src/java/controller/authentication/MainController.java</file>
-            <file>file:/D:/LazyMovie/web/phimbo.jsp</file>
-            <file>file:/D:/LazyMovie/web/phimle.jsp</file>
-            <file>file:/D:/LazyMovie/web/css/home.css</file>
-            <file>file:/D:/LazyMovie/src/java/controller/ViewMovieVideoController.java</file>
-            <file>file:/D:/LazyMovie/src/java/dto/MovieDTO.java</file>
-            <file>file:/D:/LazyMovie/web/admin1.jsp</file>
         </group>
     </open-files>
 </project-private>

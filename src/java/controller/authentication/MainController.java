@@ -27,6 +27,9 @@ public class MainController extends HttpServlet {
     private static final String DELETEMOVIE_PAGE = "DeleteMovieController";
     private static final String EDITMOVIE_PAGE = "excuteEditController";   
     private static final String VIEWMOVIEVIDEO_PAGE = "ViewMovieVideoController";
+    private static final String USER_PAGE = "UserController";
+    private static final String DELETEUSER_PAGE = "DeleteUserController";
+    
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -68,7 +71,12 @@ public class MainController extends HttpServlet {
 
             } else if (action.equals("viewMovieVideo")){
                 url = VIEWMOVIEVIDEO_PAGE;
+            } else if(action.equals("viewUsers")){
+                url = USER_PAGE;
+            }else if(action.equals("deleteUser")){
+                url =DELETEUSER_PAGE;
             }
+            
         } catch (Exception e) {
             e.printStackTrace();
         }

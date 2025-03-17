@@ -6,6 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import web.utils.DBUtils;
 
 public class UserDAO {
@@ -86,5 +88,68 @@ public class UserDAO {
     }
     return false;
 }
+ public List<UserDTO> getAllUsers() throws ClassNotFoundException {
+        List<UserDTO> users = new ArrayList<>();
+        String query = "SELECT UserID, userName, fullName, email, phone, role FROM [User]";
+        try (Connection conn = DBUtils.getConnection();
+             PreparedStatement ps = conn.prepareStatement(query);
+             ResultSet rs = ps.executeQuery()) {
 
+            while (rs.next()) {
+                UserDTO user = new UserDTO(
+                        rs.getInt("UserID"),
+                        rs.getString("userName"),
+                        rs.getString("fullName"),
+                        rs.getString("email"),
+                        rs.getString("phone"),
+                        null, //  password
+                        null, //  dateOfBirth
+                        rs.getString("role"),
+                        null  //  gender
+                );
+                users.add(user);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return users;
+    }
+ public static void main(String[] args) {
+        try {
+            UserDAO userDAO = new UserDAO();
+            List<UserDTO> users = userDAO.getAllUsers();
+            
+            if (users.isEmpty()) {
+                System.out.println("Không có người dùng nào trong database.");
+            } else {
+                System.out.println("Danh sách người dùng:");
+                for (UserDTO user : users) {
+                    System.out.println("ID: " + user.getUserID() + 
+                                       ", Tên: " + user.getFullName() + 
+                                       ", Email: " + user.getEmail() + 
+                                       ", Phone: " + user.getPhone() + 
+                                       ", Role: " + user.getRole());
+                }
+            }
+        } catch (ClassNotFoundException e) {
+            System.err.println("Lỗi: Không tìm thấy driver JDBC.");
+            e.printStackTrace();
+        } catch (Exception e) {
+            System.err.println("Lỗi khi lấy danh sách người dùng.");
+            e.printStackTrace();
+        }
+    }
+
+    public boolean deleteUser(int userID) {
+        boolean result = false;
+        String sql = "DELETE FROM [User] WHERE UserID = ?";
+        try (Connection conn = DBUtils.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setInt(1, userID);
+            result = ps.executeUpdate() > 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
 }
