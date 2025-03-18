@@ -1,11 +1,14 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <% if (request.getAttribute("movie") == null) { %>
 <p style="color:red;">Không tìm thấy dữ liệu phim.</p>
 <% }%>
-
+<c:if test="${empty movies}">
+    <jsp:forward page="MainController?action=viewMovieInHome&viewType=homeview"/>
+</c:if>
 <!DOCTYPE html>
 <html>
-    <head>
+        <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="css/homeview.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
@@ -20,23 +23,17 @@
                     </a>
                 </div>
                 <ul class="menu-list">
-                    <li class="menu-list-item"><a href="home.jsp">TRANG CHỦ</a></li>
-                    <li class="menu-list-item"><a href="phimchieurap.jsp">PHIM CHIẾU RẠP</a></li>
-                    <li class="menu-list-item"><a href="phimle.jsp">PHIM LẺ</a></li>
+                    <li class="menu-list-item"><a href="home.jsp">TRANG CHỦ</a>
+                    </li>
+                    <li class="menu-list-item"><a href="MovieController?action=phimchieurap">PHIM CHIẾU RẠP</a></li>
+                    <li class="menu-list-item"><a href="MovieController?action=phimle">PHIM LẺ</a></li>
+
                     <li class="menu-list-item genre-dropdown">
                         <a href="#">THỂ LOẠI</a>
                         <ul class="submenu">
-                            <li><a href="#">HÀNH ĐỘNG</a></li>
-                            <li><a href="#">PHIÊU LƯU</a></li>
-                            <li><a href="#">KINH DỊ</a></li>
-                            <li><a href="#">HÀI HƯỚC</a></li>
-                            <li><a href="#">TÂM LÝ</a></li>
-                            <li><a href="#">LÃNG MẠN</a></li>
-                            <li><a href="#">KHOA HỌC VIỄN TƯỞNG</a></li>
-                            <li><a href="#">HOẠT HÌNH</a></li>
-                            <li><a href="#">TÀI LIỆULIỆU</a></li>
-                            <li><a href="#">TỘI PHẠM</a></li>
-                            <li><a href="#">CỔ ĐIỂN</a></li>
+                            <c:forEach var="genre" items="${genres}">
+                                <li><a href="MovieController?action=viewByGenre&genreID=${genre.genreID}">${genre.genreName}</a></li>
+                                </c:forEach>
                         </ul>
                     </li>
                 </ul>

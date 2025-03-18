@@ -34,17 +34,9 @@
                     <li class="menu-list-item genre-dropdown">
                         <a href="#">THỂ LOẠI</a>
                         <ul class="submenu">
-                            <li><a href="#">HÀNH ĐỘNG</a></li>
-                            <li><a href="#">PHIÊU LƯU</a></li>
-                            <li><a href="#">KINH DỊ</a></li>
-                            <li><a href="#">HÀI HƯỚC</a></li>
-                            <li><a href="#">TÂM LÝ</a></li>
-                            <li><a href="#">LÃNG MẠN</a></li>
-                            <li><a href="#">KHOA HỌC VIỄN TƯỞNG</a></li>
-                            <li><a href="#">HOẠT HÌNH</a></li>
-                            <li><a href="#">TÀI LIỆU</a></li>
-                            <li><a href="#">TỘI PHẠM</a></li>
-                            <li><a href="#">CỔ ĐIỂN</a></li>
+                            <c:forEach var="genre" items="${genres}">
+                                <li><a href="MovieController?action=viewByGenre&genreID=${genre.genreID}">${genre.genreName}</a></li>
+                                </c:forEach>
                         </ul>
                     </li>
                 </ul>
@@ -54,9 +46,9 @@
                         <input type="hidden" name="action" value="search">
                         <button type="submit" class="search-icon"><i class="fas fa-search"></i></button>
                     </form>
-                    <a href="cart.jsp" class="cart-icon">
-                        <i class="fas fa-shopping-cart"></i>
-                    </a>
+                    
+                        <i class="cart-icon fas fa-shopping-cart"></i>
+                   
                 </div>
 
                 <div class="profile-dropdown">

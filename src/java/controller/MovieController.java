@@ -34,20 +34,15 @@ public class MovieController extends HttpServlet {
                 double rating = Double.parseDouble(request.getParameter("rating"));
                 String videoUrl = request.getParameter("videoUrl");
                 String thumbnailUrl = request.getParameter("thumbnailUrl");
-
-                // Lấy user từ session
                 HttpSession session = request.getSession(true);
                 UserDTO user = (UserDTO) session.getAttribute("User");
                 String userName = user.getUserName();
-
-                // Lấy danh sách Genre từ form
+                //lay genre tu form 
                 List<Integer> genreIds = request.getParameterValues("genre") != null
                         ? Arrays.stream(request.getParameterValues("genre"))
                                 .map(Integer::parseInt)
                                 .collect(Collectors.toList())
                         : new ArrayList<>();
-
-                // Tạo đối tượng MovieDTO
                 MovieDTO newMovie = new MovieDTO(title, description, releaseYear, movieTypeID, countryID, rating, videoUrl, thumbnailUrl, userName);
                 
                 // Thêm phim vào database

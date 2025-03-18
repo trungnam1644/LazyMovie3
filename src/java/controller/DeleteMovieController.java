@@ -37,11 +37,11 @@ public class DeleteMovieController extends HttpServlet {
         boolean isDeleted = movieDAO.deleteMovie(movieID);
 
         if (isDeleted) {
-            // Chuyển hướng đến trang admin hoặc hiển thị thông báo thành công
+            
             response.getWriter().write("Movie deleted successfully!");
             request.getRequestDispatcher("admin1.jsp").forward(request, response);
         } else {
-            // Nếu xóa không thành công, hiển thị thông báo lỗi
+            
             response.getWriter().write("Failed to delete movie.");
         }
     }

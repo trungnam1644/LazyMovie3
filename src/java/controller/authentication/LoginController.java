@@ -20,7 +20,6 @@ import javax.servlet.http.HttpSession;
  * @author trung
  */
 public class LoginController extends HttpServlet {
-
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -58,7 +57,7 @@ public class LoginController extends HttpServlet {
                     session.setAttribute("User", user);
                 request.getRequestDispatcher("admin1.jsp").forward(request, response);                    
                 }else {
-                    request.setAttribute("Error_Login","wrong user or password");
+                    request.setAttribute("Error_Login","Wrong user or password. Please try again!");
                 request.getRequestDispatcher("login.jsp").forward(request, response);     
                 }                                            
               }

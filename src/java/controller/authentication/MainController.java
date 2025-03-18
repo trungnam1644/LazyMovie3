@@ -1,8 +1,10 @@
 package controller.authentication;
 
 import dao.CountryDAO;
+import dao.GenreDAO;
 import dto.CountryDTO;
 import dao.MovieDAO;
+import dto.GenreDTO;
 import dto.MovieDTO;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -63,12 +65,21 @@ public class MainController extends HttpServlet {
                 List<MovieDTO> movieList = movieDAO.getAllMovies();
                 request.setAttribute("movies", movieList);
                 request.getRequestDispatcher("admin1.jsp").forward(request, response);
+                
             } else if (action.equals("viewMovieInHome")) {               
                     MovieDAO movieDAO = new MovieDAO();
                     List<MovieDTO> movieList = movieDAO.getAllMovies();
                     request.setAttribute("movies", movieList);
-                    url = "home.jsp"; 
-                
+                                                   
+                GenreDAO genreDAO = new GenreDAO();
+                List<GenreDTO> genreList = genreDAO.getAllGenres();
+                request.setAttribute("genres", genreList);
+                String viewType = request.getParameter("viewType");
+                        if("homeview".equals(viewType)){
+                            url = "homeview.jsp";
+                        }else{
+                            url = "home.jsp";
+                        }
 
             } else if (action.equals("viewMovieVideo")){
                 url = VIEWMOVIEVIDEO_PAGE;

@@ -27,9 +27,7 @@
                     <input type="password" id="password" name="password" placeholder="Mật Khẩu" required>
                 </div>
                 <button type="submit">Đăng Nhập</button>
-                <h1 style="color: red" > ${requestScope.Error_Login}
-                    
-                </h1>
+                <h1> ${requestScope.Error_Login}</h1>
                 
             </form>
                 <div class="register-link">
