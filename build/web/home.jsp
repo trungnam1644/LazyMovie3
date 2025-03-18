@@ -35,7 +35,7 @@
                         <a href="#">THỂ LOẠI</a>
                         <ul class="submenu">
                             <c:forEach var="genre" items="${genres}">
-                                <li><a href="MovieController?action=viewByGenre&genreID=${genre.genreID}">${genre.genreName}</a></li>
+                                <li><a href="MainController?action=viewByGenre&genreID=${genre.genreID}">${genre.genreName}</a></li>
                                 </c:forEach>
                         </ul>
                     </li>

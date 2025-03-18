@@ -96,6 +96,34 @@ public class MovieDTO {
     this.rating = rating;
     }
 
+    public MovieDTO(int movieID, String title, String description, int releaseYear, String movieTypeName ,String countryName, double rating, String videoURL, String thumbnailURL, String userName, String genres) {
+        this.movieID = movieID;
+        this.title = title;
+        this.description = description;
+        this.releaseYear = releaseYear;
+        this.countryName = countryName;
+        this.rating = rating;
+        this.videoURL = videoURL;
+        this.thumbnailURL = thumbnailURL;
+        this.userName = userName;
+        this.genres = genres;
+        this.movieTypeName = movieTypeName;
+    }
+
+    public MovieDTO(int movieID, String title, String description, int releaseYear, double rating, String thumbnailURL) {   
+    this.movieID = movieID;
+    this.title = title;
+    this.description = description;
+    this.releaseYear = releaseYear;
+    this.rating = rating;
+    this.thumbnailURL = thumbnailURL;
+    
+    }
+
+    
+
+    
+
     
 
     

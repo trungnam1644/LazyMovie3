@@ -2,14 +2,14 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Phim Chiếu Rạp</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
-    <link rel="stylesheet" href="css/home.css">
-</head>
-<body>
-    <div class="navbar">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Phim Chiếu Rạp</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+        <link rel="stylesheet" href="css/home.css">
+    </head>
+    <body>
+        <div class="navbar">
             <div class="navbar-container">
                 <div class="logo-container">
                     <a href="home.jsp">
@@ -23,17 +23,9 @@
                     <li class="menu-list-item genre-dropdown">
                         <a href="#">THỂ LOẠI</a>
                         <ul class="submenu">
-                            <li><a href="#">HÀNH ĐỘNG</a></li>
-                            <li><a href="#">PHIÊU LƯU</a></li>
-                            <li><a href="#">KINH DỊ</a></li>
-                            <li><a href="#">HÀI HƯỚC</a></li>
-                            <li><a href="#">TÂM LÝ</a></li>
-                            <li><a href="#">LÃNG MẠN</a></li>
-                            <li><a href="#">KHOA HỌC VIỄN TƯỞNG</a></li>
-                            <li><a href="#">HOẠT HÌNH</a></li>
-                            <li><a href="#">TÀI LIỆULIỆU</a></li>
-                            <li><a href="#">TỘI PHẠM</a></li>
-                            <li><a href="#">CỔ ĐIỂN</a></li>
+                            <c:forEach var="genre" items="${genres}">
+                                <li><a href="MainController?action=viewByGenre&genreID=${genre.genreID}">${genre.genreName}</a></li>
+                                </c:forEach>
                         </ul>
                     </li>
                 </ul>

@@ -3,14 +3,28 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/D:/LazyMovie/src/java/controller/SetTypeController.java</file>
+            <file>file:/D:/LazyMovie/web/packagesUser.jsp</file>
+            <file>file:/D:/LazyMovie/src/java/controller/authentication/LoginController.java</file>
+            <file>file:/D:/LazyMovie/web/phimchieurap.jsp</file>
+            <file>file:/D:/LazyMovie/web/WEB-INF/web.xml</file>
+            <file>file:/D:/LazyMovie/web/admin2.jsp</file>
+            <file>file:/D:/LazyMovie/web/css/admin2.css</file>
+            <file>file:/D:/LazyMovie/src/java/dao/MovieDAO.java</file>
+            <file>file:/D:/LazyMovie/web/css/login.css</file>
+            <file>file:/D:/LazyMovie/src/java/dao/GenreDAO.java</file>
+            <file>file:/D:/LazyMovie/src/java/controller/CreatePageController.java</file>
             <file>file:/D:/LazyMovie/web/home.jsp</file>
+            <file>file:/D:/LazyMovie/web/css/packagesUser.css</file>
             <file>file:/D:/LazyMovie/web/homeview.jsp</file>
             <file>file:/D:/LazyMovie/src/java/controller/authentication/MainController.java</file>
             <file>file:/D:/LazyMovie/web/css/home.css</file>
-            <file>file:/D:/LazyMovie/src/java/controller/authentication/LoginController.java</file>
-            <file>file:/D:/LazyMovie/web/WEB-INF/web.xml</file>
+            <file>file:/D:/LazyMovie/web/phimle.jsp</file>
+            <file>file:/D:/LazyMovie/src/java/controller/MovieController.java</file>
+            <file>file:/D:/LazyMovie/src/java/dto/MovieDTO.java</file>
+            <file>file:/D:/LazyMovie/web/css/admin.css</file>
             <file>file:/D:/LazyMovie/web/login.jsp</file>
-            <file>file:/D:/LazyMovie/web/css/login.css</file>
+            <file>file:/D:/LazyMovie/web/css/register.css</file>
         </group>
     </open-files>
 </project-private>

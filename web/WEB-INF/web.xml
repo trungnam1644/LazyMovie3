@@ -56,6 +56,10 @@
         <servlet-name>SearchController</servlet-name>
         <servlet-class>controller.SearchController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ViewGenresController</servlet-name>
+        <servlet-class>controller.ViewGenresController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
         <url-pattern>/LoginController</url-pattern>
@@ -128,6 +132,10 @@
     <servlet-mapping>
         <servlet-name>SearchController</servlet-name>
         <url-pattern>/SearchController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewGenresController</servlet-name>
+        <url-pattern>/ViewGenresController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

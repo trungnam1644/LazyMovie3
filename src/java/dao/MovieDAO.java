@@ -423,29 +423,15 @@ public List<MovieTypeDTO> getAllMovieTypes() {
 
         return movies;
     }
- public static void main(String[] args) {
-        try {
-            // Nhập từ khóa tìm kiếm
-            String keyword = "Bố Già";
-            System.out.println("🔍 Đang tìm kiếm phim với từ khóa: " + keyword);
+    
+    
+ 
 
-            // Gọi hàm searchMovies
-            List<MovieDTO> movies = searchMovies(keyword);
 
-            // Kiểm tra kết quả
-            if (movies.isEmpty()) {
-                System.out.println("❌ Không tìm thấy phim nào.");
-            } else {
-                System.out.println("✅ Tìm thấy " + movies.size() + " phim:");
-                for (MovieDTO movie : movies) {
-                    System.out.println("🎬 " + movie.getTitle() + " | Rating: " + movie.getRating());
-                }
-            }
-        } catch (Exception e) {
-            System.out.println("❌ Lỗi khi tìm kiếm phim: " + e.getMessage());
-            e.printStackTrace();
-        }
-    }
+
+
+
+ 
 }
 
 

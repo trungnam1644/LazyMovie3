@@ -32,6 +32,7 @@ public class MainController extends HttpServlet {
     private static final String USER_PAGE = "UserController";
     private static final String DELETEUSER_PAGE = "DeleteUserController";
     private static final String SEARCH_PAGE = "SearchController";
+    private static final String VIEWByGenre_PAGE = "ViewGenresController";
     
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -89,6 +90,8 @@ public class MainController extends HttpServlet {
                 url =DELETEUSER_PAGE;
             }else if (action.equals("search")){
                  url = SEARCH_PAGE;
+            }else if(action.equals("viewByGenre")){
+                url = VIEWByGenre_PAGE;
             }
             
            

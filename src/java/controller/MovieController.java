@@ -2,6 +2,7 @@ package controller;
 
 import User.UserDTO;
 import dao.*;
+import dto.GenreDTO;
 import dto.MovieDTO;
 import java.io.IOException;
 import java.util.Arrays;
@@ -108,7 +109,10 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response)
     if ("phimchieurap".equals(action)) {
         try {
             List<MovieDTO> phimChieuRapList = movieDAO.getMoviesForType("Phim Chiếu Rạp");
+            List<GenreDTO> genres = genreDAO.getAllGenres(); 
+            
             request.setAttribute("phimchieurapList", phimChieuRapList);
+            request.setAttribute("genres", genres);
             request.getRequestDispatcher("phimchieurap.jsp").forward(request, response);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
@@ -116,11 +120,15 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response)
     } else if ("phimle".equals(action)) {
         try {
             List<MovieDTO> phimLeList = movieDAO.getMoviesForType("Phim Lẻ");
+            List<GenreDTO> genres = genreDAO.getAllGenres(); 
+            
             request.setAttribute("phimleList", phimLeList);
+            request.setAttribute("genres", genres); 
             request.getRequestDispatcher("phimle.jsp").forward(request, response);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
 }
+
 }
