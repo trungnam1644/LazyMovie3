@@ -4,14 +4,13 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/D:/LazyMovie/web/home.jsp</file>
-            <file>file:/D:/LazyMovie/src/java/controller/DeleteMovieController.java</file>
+            <file>file:/D:/LazyMovie/web/homeview.jsp</file>
             <file>file:/D:/LazyMovie/src/java/controller/authentication/MainController.java</file>
-            <file>file:/D:/LazyMovie/src/java/controller/EditMovieController.java</file>
-            <file>file:/D:/LazyMovie/src/java/controller/MovieController.java</file>
-            <file>file:/D:/LazyMovie/web/editMovie.jsp</file>
-            <file>file:/D:/LazyMovie/src/java/controller/authentication/LogoutController.java</file>
-            <file>file:/D:/LazyMovie/src/java/controller/UserController.java</file>
-            <file>file:/D:/LazyMovie/src/java/controller/SearchController.java</file>
+            <file>file:/D:/LazyMovie/web/css/home.css</file>
+            <file>file:/D:/LazyMovie/src/java/controller/authentication/LoginController.java</file>
+            <file>file:/D:/LazyMovie/web/WEB-INF/web.xml</file>
+            <file>file:/D:/LazyMovie/web/login.jsp</file>
+            <file>file:/D:/LazyMovie/web/css/login.css</file>
         </group>
     </open-files>
 </project-private>

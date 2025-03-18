@@ -47,7 +47,9 @@
                         <button type="submit" class="search-icon"><i class="fas fa-search"></i></button>
                     </form>
                     
+                       <a href="packagesUser.jsp">
                         <i class="cart-icon fas fa-shopping-cart"></i>
+                    </a>
                    
                 </div>
 
@@ -108,62 +110,6 @@
                         </div>
                     </div>
                 </div>
-
-
-                <!-- Giao diện chọn gói xem phim -->
-                <div class="package-overlay">
-                    <div class="package-container">
-                        <i class="close-icon fas fa-times"></i>
-                        <h2>Chọn gói xem phim</h2>
-                        <div class="packages">
-                            <div class="package basic">
-                                <h3>Gói Cơ Bản</h3>
-                                <p class="package-price">50.000đ / tháng</p>
-                                <ul>
-                                    <li>Độ phân giải 720p (HD)</li>
-                                    <li>Xem trên 1 thiết bị</li>
-                                    <li>Có quảng cáo</li>
-                                    <li>Không thể tải xuống</li>
-                                    <li>Giới hạn phim</li>
-                                </ul>
-                                <button class="select-package" onclick="selectPackage(1)">Chọn gói</button>
-                            </div>
-                            <div class="package premium">
-                                <h3>Gói Cao Cấp</h3>
-                                <p class="package-price">250.000đ / tháng</p>
-                                <ul>
-                                    <li>Độ phân giải 4K (Ultra HD) + HDR</li>
-                                    <li>Xem trên 4 thiết bị</li>
-                                    <li>Không quảng cáo</li>
-                                    <li>Có thể tải về để xem</li>
-                                    <li>Xem không giới hạn</li>
-                                </ul>
-                                <button class="select-package" onclick="selectPackage(2)">Chọn gói</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Form ẩn để gửi dữ liệu -->
-                <form id="packageForm" action="MainController" method="post">
-                    <input type="hidden" name="action" value="SetType">
-                    <input type="hidden" name="typeID" id="typeID">
-                    <input type="hidden" name="userID" id="userID">
-
-
-                </form>
-
-                <script>
-                    function selectPackage(typeID) {
-                        let userID = "${sessionScope.User.userID}"; // Lấy userID từ session
-                        document.getElementById("typeID").value = typeID;
-                        document.getElementById("userID").value = userID;
-                        document.getElementById("packageForm").submit();
-
-                    }
-                </script>
-
-
                 <footer class="footer">
                     <p><a>Bạn có câu hỏi? Xin hãy liên hệ với chúng tôi.</a></p>
                     <p>SDT: 8429012025</p>

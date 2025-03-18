@@ -5,7 +5,7 @@
     <head>       
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Admin Quản lý người dùng</title>
-        <link rel="stylesheet" href="css/admin.css">
+        <link rel="stylesheet" href="css/admin2.css">
     </head>
     <body>
         <c:if test="${User == null || User.role != 'Admin'}">

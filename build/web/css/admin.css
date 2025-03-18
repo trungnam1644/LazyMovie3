@@ -15,7 +15,7 @@ body {
     background: #333;
     color: white;
     padding: 20px;
-    height: 100vh;
+    height: 100%;
 }
 
 .sidebar h2 {
@@ -67,7 +67,7 @@ body {
     flex: 1;
     padding: 20px;
     background: #f0f0f0; /* nền nhẹ nhàng cho nội dung */
-    min-height: 100vh;
+    height: 100%;
 }
 
 header {

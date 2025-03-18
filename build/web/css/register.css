@@ -1,15 +1,14 @@
-/* Đặt font chữ chung và nền cho trang */
+
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Arial', 'Tahoma', 'Roboto', sans-serif;
+    font-family: Arial, sans-serif;
     background-image: url(../img/background.jpg);
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
 }
 
-/* Thêm lớp phủ tối */
 body::before {
     content: "";
     position: fixed;
@@ -17,33 +16,31 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.6); /* Lớp phủ tối (độ mờ 60%) */
-    z-index: -1; /* Để lớp phủ nằm dưới nội dung */
+    background: rgba(0, 0, 0, 0.6); 
+    z-index: -1; 
 }
 
-/* Container của form */
+
 .form-container {
     width: 350px;
-    padding: 20px;
+    padding: 0 20px;
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 
-    /* Căn giữa form */
+   
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 
-/* Tiêu đề của form */
 .form-container h2 {
     text-align: center;
     color: #333;
     margin-bottom: 20px;
 }
 
-/* Cách bố trí của mỗi nhóm form */
 .form-group {
     margin-bottom: 15px;
 }
@@ -55,7 +52,6 @@ body::before {
     color: #555;
 }
 
-/* Ô nhập liệu và danh sách chọn */
 .form-group input,
 .form-group select {
     width: 100%;

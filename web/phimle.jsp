@@ -5,23 +5,89 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Phim Lẻ</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
     <link rel="stylesheet" href="css/home.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Phim Lẻ</h1>
-        <div class="movie-list">
-            <c:forEach var="movie" items="${requestScope.phimleList}">
-                <div class="movie-item">
-                    <img src="${movie.thumbnailURL}" alt="${movie.title}">
-                    <h3>${movie.title}</h3>
-                    <p>${movie.description}</p>
-                    <p>Năm phát hành: ${movie.releaseYear}</p>
-                    <p>Đánh giá: ${movie.rating}/10</p>
-                    <a href="MovieDetailController?movieID=${movie.movieID}">Xem chi tiết</a>
+    <div class="navbar">
+            <div class="navbar-container">
+                <div class="logo-container">
+                    <a href="home.jsp">
+                        <img src="img/logo.jpg" alt="Logo">
+                    </a>
                 </div>
-            </c:forEach>
+                <ul class="menu-list">
+                    <li class="menu-list-item"><a href="home.jsp">TRANG CHỦ</a></li>
+                    <li class="menu-list-item"><a href="MovieController?action=phimchieurap">PHIM CHIẾU RẠP</a></li>
+                    <li class="menu-list-item"><a href="MovieController?action=phimle">PHIM LẺ</a></li>
+                    <li class="menu-list-item genre-dropdown">
+                        <a href="#">THỂ LOẠI</a>
+                        <ul class="submenu">
+                            <li><a href="#">HÀNH ĐỘNG</a></li>
+                            <li><a href="#">PHIÊU LƯU</a></li>
+                            <li><a href="#">KINH DỊ</a></li>
+                            <li><a href="#">HÀI HƯỚC</a></li>
+                            <li><a href="#">TÂM LÝ</a></li>
+                            <li><a href="#">LÃNG MẠN</a></li>
+                            <li><a href="#">KHOA HỌC VIỄN TƯỞNG</a></li>
+                            <li><a href="#">HOẠT HÌNH</a></li>
+                            <li><a href="#">TÀI LIỆULIỆU</a></li>
+                            <li><a href="#">TỘI PHẠM</a></li>
+                            <li><a href="#">CỔ ĐIỂN</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="search-cart-container">
+                    <form action="MainController" method="get" class="search-container">
+                        <input type="text" name="keyword" class="search-input" placeholder="Tìm kiếm...">
+                        <input type="hidden" name="action" value="search">
+                        <button type="submit" class="search-icon"><i class="fas fa-search"></i></button>
+                    </form>
+                </div>
+
+                <div class="profile-dropdown">
+                    <a href="#" class="profile-container">                      
+                        <div class="profile-text-container">
+                            <span class="profile-text">
+                                ${User.fullName} <!-- Hiển thị tên người dùng -->
+                            </span>
+                        </div>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="profile.jsp">Trang cá nhân</a></li>
+                            <c:if test="${User.role == 'Admin'}">
+                            <li><a href="admin1.jsp">Quản lý Admin</a></li>
+                            </c:if>
+                        <li><a href="MainController?action=logout">Đăng xuất</a></li>
+                    </ul>
+                </div>          
+            </div>
         </div>
-    </div>
-</body>
+        <div class="container">
+            <div class="content-container">
+                <div class="movie-list-container">
+                    <h1 class="movie-list-title">PHIM LẺ</h1>
+                    <div class="movie-list-wrapper">
+                        <div class="movie-list">
+                            <c:forEach var="movie" items="${requestScope.phimleList}">
+                                <div class="movie-list-item">
+                                    <img class="movie-list-item-img" src="${movie.thumbnailURL}" alt="${movie.title}">
+                                    <span class="movie-rating"><i class="fas fa-star"></i> ${movie.rating}</span>
+                                    <span class="movie-list-item-title">${movie.title}</span>
+                                    <a href="MainController?action=viewMovieVideo&movieID=${movie.movieID}" class="movie-list-item-button">Watch</a>
+                                </div>
+                            </c:forEach>
+                        </div>
+                    </div>
+                </div>
+            </div>         
+        </div>
+        <footer class="footer">
+            <p><a>Bạn có câu hỏi? Xin hãy liên hệ với chúng tôi.</a></p>
+            <p>SDT: 8429012025</p>
+            <p>Email: LazyMovie@fpt.vip.vn</p>
+            <p>&copy; LazyMovie. LazyMovie.com.vn</p>
+        </footer>
+        <script src="app.js"></script>
+    </body>
 </html>
