@@ -95,8 +95,5 @@
                 <p>Email: LazyMovie@fpt.vip.vn</p>
                 <p>&copy; LazyMovie. LazyMovie.com.vn</p>
             </footer>
-
-
-            <script src="app.js"></script>
     </body>
 </html>

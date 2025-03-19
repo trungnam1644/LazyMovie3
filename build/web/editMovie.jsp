@@ -113,30 +113,3 @@
     </body>
 </html>
 
-<style>
-    .button-group {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 20px;
-    }
-
-    .button-group button {
-        width: 48%;
-    }
-
-    .back-button {
-        display: block;
-        width: fit-content;
-        margin: 20px auto;
-        padding: 10px 20px;
-        background-color: #6c757d;
-        color: white;
-        text-align: center;
-        text-decoration: none;
-        border-radius: 5px;
-    }
-
-    .back-button:hover {
-        background-color: #5a6268;
-    }
-</style>

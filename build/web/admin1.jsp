@@ -69,10 +69,6 @@
                         </tbody>
                     </table>          
                 </section>
-
-
-
-
             </main>
     </body>
 </html>
