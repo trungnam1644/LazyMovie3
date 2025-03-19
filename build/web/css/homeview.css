@@ -102,35 +102,32 @@ body {
 }
 
 .search-input {
-  width: 500px;
-  padding: 8px 10px 8px 10px; 
-  border: 1px solid #ccc;
-  border-radius: 20px;
-  font-size: 14px;
-  outline: none;
-}
-
-.search-icon {
-  position: absolute;
-  right: 10px;
-  top: 9px;
-  color: gray;
-  cursor: pointer;
-}
-
-.cart-icon {
-  font-size: 20px;
-  color: white;
-  cursor: pointer;
-  transition: color 0.3s;
-}
-
-.cart-icon:hover {
-  color: #4dbf00;
+    width: 500px;
+    padding: 8px 10px 8px 10px; 
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    font-size: 14px;
+    outline: none;
 }
 
 .search-input:focus {
-  border-color: #4dbf00;
+    border-color: #4dbf00;
+}
+
+.search-icon {
+    position: absolute;
+    right: 10px;
+    top: 9px;
+    cursor: pointer;
+    background: none;      /* Xóa nền */
+    border: none;          /* Xóa viền */
+    padding: 0;            /* Xóa padding dư thừa */
+    margin-left: 5px;      /* (Tuỳ chọn) khoảng cách với ô input */
+    font-size: 16px;       /* Kích thước icon */
+}
+
+.search-icon:hover {
+    color: #ff0000;        
 }
 
 .profile-container {
@@ -193,110 +190,37 @@ body {
 /* Hiển thị menu khi hover vào profile */
 .profile-dropdown:hover .dropdown-menu {
   display: block;
-}
+}   
 
-.container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    min-height: 100vh;
-    box-sizing: border-box;
-    background-color: #000;
-    padding-bottom: 120px; /* Thêm padding để footer không đè lên nội dung */
-}
-
-
-.left-sidebar, .right-sidebar {
-  flex: 2; /* Tỷ lệ 3 */
-}
-
+/* Nội dung chính */
 .main-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: calc(100vh - 200px); /* Trừ đi chiều cao của footer */
+    background-color: black;
+    padding: 20px;
 }
 
-.video-container {
-    width: 100vw;
-    height: 80vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* Thông tin phim */
+.details {
     margin-bottom: 20px;
 }
 
-.video-container iframe {
-    width: 90%;
-    height: 100%;
-    border-radius: 10px;
-}
-
-
-
 .movie-title {
-  font-size: 28px;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.rating {
-  color: #FFD700;
-  font-size: 16px;
-  margin-bottom: 15px;
-}
-
-.details {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-
-.detail-item {
-  background-color: #2a2a2a;
-  padding: 8px 15px;
-  border-radius: 5px;
-  font-size: 14px;
-}
-
-.description {
-  background-color: #2a2a2a;
-  padding: 15px;
-  border-radius: 5px;
-  margin-bottom: 30px;
-  line-height: 1.6;
-}
-
-.footer {
-    width: 100%;
-    height: 100px;
-    background: black; 
+    font-size: 32px;
     color: white;
-    text-align: center;
-    font-size: 14px;
-    padding: 25px 0;
+    margin: 15px 0;
 }
 
-.footer p{
+.details p {
+    font-size: 16px;
     margin-bottom: 10px;
-}
-html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
+    line-height: 1.6;
+    color: white;
 }
 
-.container {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
-.main-content {
-    flex-grow: 1;
+/* Mô tả phim */
+.description {
+    font-size: 16px;
+    line-height: 1.8;
+    color: white;
 }
 
 .footer {
@@ -308,4 +232,8 @@ html, body {
     font-size: 14px;
     padding: 25px 0;
     position: relative;
+}
+
+.footer p{
+    margin-bottom: 10px;
 }

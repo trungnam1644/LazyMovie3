@@ -5,13 +5,13 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Thêm Phim Mới</title>
-        <link rel="stylesheet" href="css/register.css">
+        <link rel="stylesheet" href="css/editMovie.css">
         <!-- Thêm CSS cho Select2 -->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
     </head>
     <body>
         <div class="logo-lazymoive">
-            <a href="index.jsp">
+            <a href="home.jsp">
                 <img src="img/logo.jpg" alt="Logo">
             </a>    
         </div>

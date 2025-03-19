@@ -23,70 +23,71 @@
                     </a>
                 </div>
                 <ul class="menu-list">
-                    <li class="menu-list-item"><a href="home.jsp">TRANG CHỦ</a>
-                    </li>
+                    <li class="menu-list-item"><a href="home.jsp">TRANG CHỦ</a></li>
                     <li class="menu-list-item"><a href="MovieController?action=phimchieurap">PHIM CHIẾU RẠP</a></li>
                     <li class="menu-list-item"><a href="MovieController?action=phimle">PHIM LẺ</a></li>
-
                     <li class="menu-list-item genre-dropdown">
                         <a href="#">THỂ LOẠI</a>
                         <ul class="submenu">
                             <c:forEach var="genre" items="${genres}">
-                                <li><a href="MovieController?action=viewByGenre&genreID=${genre.genreID}">${genre.genreName}</a></li>
+                                <li><a href="MainController?action=viewByGenre&genreID=${genre.genreID}">${genre.genreName}</a></li>
                                 </c:forEach>
                         </ul>
                     </li>
                 </ul>
                 <div class="search-cart-container">
-                    <div class="search-container">
-                        <input type="text" class="search-input" placeholder="Tìm kiếm...">
-                        <i class="search-icon fas fa-search"></i>
-                    </div>
+                    <form action="MainController" method="get" class="search-container">
+                        <input type="text" name="keyword" class="search-input" placeholder="Tìm kiếm...">
+                        <input type="hidden" name="action" value="search">
+                        <button type="submit" class="search-icon"><i class="fas fa-search"></i></button>
+                    </form>
                 </div>
+
                 <div class="profile-dropdown">
-                    <a href="#" class="profile-container">
-                        <img class="profile-picture" src="img/profile.jpg" alt="">
+                    <a href="#" class="profile-container">                      
                         <div class="profile-text-container">
-                            <span class="profile-text">Profile</span>
+                            <span class="profile-text">
+                                ${User.fullName} <!-- Hiển thị tên người dùng -->
+                            </span>
                         </div>
                     </a>
                     <ul class="dropdown-menu">
                         <li><a href="profile.jsp">Trang cá nhân</a></li>
-                        <li><a href="admin1.jsp">Quản lý Admin</a></li> <!-- Nút Admin -->
-                        <li><a href="index.jsp" class="logout-btn">Đăng xuất</a></li>
+                            <c:if test="${User.role == 'Admin'}">
+                            <li><a href="admin1.jsp">Quản lý Admin</a></li>
+                            </c:if>
+                        <li><a href="MainController?action=logout">Đăng xuất</a></li>
                     </ul>
                 </div>          
             </div>
         </div>
         <div class="container">
-            <!-- Bên trái để trống -->
-            <div class="left-sidebar"></div>
-
             <!-- Nội dung chính -->
             <div class="main-content">
                 <!-- Video player -->
                 <div class="video-container">
                     <iframe 
                         src="${movie.videoURL}" 
+                        width="100%" 
+                        height="585"
                         frameborder="0" 
                         allowfullscreen>
                     </iframe>
                 </div>
 
+                <div class="details">
+                    <h1 class="movie-title"">
+                        ${movie.title}
+                    </h1>
 
-               <h1 class="movie-title" style="background: red; color: white; z-index: 999;">
-    ${movie.title}
-</h1>
-
+                    
+                    <p><strong>Thể loại:</strong> ${movie.genres}</p>
+                    <p><strong>Năm:</strong> ${movie.releaseYear}</p>
+                    <p><strong>Quốc gia:</strong> ${movie.countryName}</p>                 
+                </div>
                 <p class="description">${movie.description}</p>
-                <p><strong>Diễn viên:</strong> ${movie.actors}</p>
-                <p><strong>Thể loại:</strong> ${movie.genres}</p>
-                <p><strong>Năm:</strong> ${movie.releaseYear}</p>
-                <p><strong>Quốc gia:</strong> ${movie.countryName}</p>
-
-                <!-- Bên phải để trống -->
-                <div class="right-sidebar"></div>
             </div>
+        </div>
 
             <footer class="footer">
                 <p><a>Bạn có câu hỏi? Xin hãy liên hệ với chúng tôi.</a></p>
