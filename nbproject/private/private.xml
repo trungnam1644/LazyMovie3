@@ -6,13 +6,16 @@
             <file>file:/D:/LazyMovie/src/java/controller/SetTypeController.java</file>
             <file>file:/D:/LazyMovie/web/phimchieurap.jsp</file>
             <file>file:/D:/LazyMovie/web/WEB-INF/web.xml</file>
+            <file>file:/D:/LazyMovie/web/editMovie.jsp</file>
             <file>file:/D:/LazyMovie/web/css/admin2.css</file>
             <file>file:/D:/LazyMovie/src/java/User/UserDAO.java</file>
             <file>file:/D:/LazyMovie/src/java/dao/MovieDAO.java</file>
             <file>file:/D:/LazyMovie/web/css/login.css</file>
             <file>file:/D:/LazyMovie/web/homeview.jsp</file>
             <file>file:/D:/LazyMovie/web/css/home.css</file>
+            <file>file:/D:/LazyMovie/web/css/homeview.css</file>
             <file>file:/D:/LazyMovie/src/java/controller/MovieController.java</file>
+            <file>file:/D:/LazyMovie/web/css/editMovie.css</file>
             <file>file:/D:/LazyMovie/web/css/admin.css</file>
             <file>file:/D:/LazyMovie/web/css/register.css</file>
             <file>file:/D:/LazyMovie/src/java/dto/GenreDTO.java</file>
@@ -22,6 +25,7 @@
             <file>file:/D:/LazyMovie/src/java/controller/ViewGenresController.java</file>
             <file>file:/D:/LazyMovie/src/java/dao/GenreDAO.java</file>
             <file>file:/D:/LazyMovie/src/java/controller/SearchController.java</file>
+            <file>file:/D:/LazyMovie/web/addMovie.jsp</file>
             <file>file:/D:/LazyMovie/src/java/controller/CreatePageController.java</file>
             <file>file:/D:/LazyMovie/web/home.jsp</file>
             <file>file:/D:/LazyMovie/web/css/packagesUser.css</file>
