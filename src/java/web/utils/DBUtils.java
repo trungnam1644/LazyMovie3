@@ -15,7 +15,7 @@ import java.sql.SQLException;
  */
 public class DBUtils {
 //    Do not change this code
-    private static final String DB_NAME = "LazyMovie";
+    private static final String DB_NAME = "LazyMovie2";
     private static final String DB_USER_NAME = "SA";
     private static final String DB_PASSWORD = "12345";
 

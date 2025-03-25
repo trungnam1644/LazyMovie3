@@ -339,6 +339,10 @@ public class MovieDAO {
     }
     return null;
 }
+    
+    
+    
+   
 public List<MovieTypeDTO> getAllMovieTypes() {
         List<MovieTypeDTO> movieTypes = new ArrayList<>();
         String sql = "SELECT MovieTypeID, MovieTypeName FROM MovieType";
@@ -357,6 +361,9 @@ public List<MovieTypeDTO> getAllMovieTypes() {
         }
         return movieTypes;
     }
+
+
+
     public List<MovieDTO> getMoviesForType(String movieTypeName) throws ClassNotFoundException {
     List<MovieDTO> movies = new ArrayList<>();
     String sql = "SELECT m.MovieID, m.Title, m.Description, m.ThumbnailURL, m.ReleaseYear, m.Rating, mt.MovieTypeName " +
